@@ -1,7 +1,9 @@
 .App {
   text-align: center;
-  height:100vh;
-  background-color: #eee;
+  background-image: url("https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position:center;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -16,4 +18,54 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  width: auto;
+}
+.card {
+  border: 1px solid #eee;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 12px;
+  flex-basis: 40%;
+  max-width: calc((100% - 12px) / 2);
+  margin: 8px;
+  max-width: 350px;
+  width: auto;
+  border-radius: 5px;
+  position: relative;
+  max-height: 300px;
+  min-height: 250px;
+  transition: 0.2s linear;
+}
+.action {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+.action .btn {
+  color: #333;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  float: left;
+  /* background-color: rgb(233, 233, 233); */
+  border: 1px solid rgb(207, 207, 207);
+  border-radius: 5px;
+}
+.content {
+  text-align: left;
+}
+.title {
+  text-align: left;
+  font-weight: 300;
+}
+
+.card:hover {
+  box-shadow: 0 10px 15px -12px black;
+  border: 1px solid rgb(201, 201, 201);
 }

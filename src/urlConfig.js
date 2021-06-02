@@ -1,1 +1,1 @@
-const API = "https://truyenmai.com/wp-json/wp/v2/";
+export const APIURL = "https://truyenmai.com/wp-json/wp/v2";

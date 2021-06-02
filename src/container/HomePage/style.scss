@@ -1,0 +1,78 @@
+.background {
+    background-image: linear-gradient(45deg, rgb(18, 12, 20), rgb(63, 56, 75));
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    .star {
+        position: relative;
+        animation: move 15s ease infinite ;
+        background-image: radial-gradient( white,rgb(242, 255, 126));
+        height: 50px;
+        width: 50px;
+        margin-right: 5px;
+        margin-left: auto;
+        border-radius:50px;
+    }
+    .star:before {
+        position: absolute;
+        content: "";
+        top: 4px;
+        left: 4px;
+        width: 42px;
+        height: 42px;
+        z-index: 1;
+        background-image: radial-gradient(white, rgb(250, 247, 74));
+        animation: rotate 2s linear infinite;
+    }
+    .star:after {
+        position: absolute;
+        content: "";
+        top: 4px;
+        left: 4px;
+        width: 42px;
+        height: 42px;
+        z-index: 1;
+        background-image: radial-gradient(white, rgb(255, 251, 19));
+        transform: rotate(45deg);
+        animation: rotate2 2s linear infinite;
+    }
+    .ground {
+        position: absolute;
+        content: "";
+        top: 80%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background-image: radial-gradient(rgb(29, 68, 27), rgb(31, 43, 34));
+    }
+}
+
+@keyframes move {
+    0% {
+        transform: translate(0);
+    }
+    100% {
+        transform: translate(-100vh, 500px);
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes rotate2 {
+    0% {
+        transform: rotate(45deg);
+    }
+    100% {
+        transform: rotate(405deg);
+    }
+}

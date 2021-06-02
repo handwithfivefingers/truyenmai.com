@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Homepage from './container/HomePage';
 import Contact from './container/Contact';
 import Blog from './container/Blog';
+import { APIURL } from './urlConfig';
 function App() {
+  console.log(APIURL);
   return (
     <div className="App">
       <Router>
