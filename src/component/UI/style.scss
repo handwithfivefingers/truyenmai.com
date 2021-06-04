@@ -1,0 +1,71 @@
+$primary-color: #fff;
+$gray: #eee;
+$purple: #ffe8fc;
+$blue: #0d6efd;
+$yellow: #ffe391;
+$dark: gray;
+
+@mixin cardShow {
+  border-top: 1px solid rgba($primary-color, 1);
+  border-left: 1px solid rgba($primary-color, 1);
+  box-shadow: -3px -3px 8px 3px rgba(#fff, 1), 5px 5px 10px -4px grey;
+}
+
+.card-ui {
+  @include cardShow;
+  background: rgba($primary-color, 0.5);
+  backdrop-filter: blur(100%);
+  border-radius: 10px;
+  padding: 8px;
+  position: Relative;
+  min-height: 200px;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  .card-ui-title h4,
+  .card-ui-content {
+    text-align: left;
+  }
+  .card-ui-action {
+    width: 100%;
+    display: flex;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    .btn {
+      float: left;
+      margin-right: 5px;
+      border-top: 2px solid $primary-color;
+      border-left: 2px solid $primary-color;
+      // border-bottom: 1px solid $dark;
+      // border-right: 1px solid $dark;
+      @include cardShow;
+      position: relative;
+      background-color: transparent;
+      color: #333;
+      z-index: 1;
+
+      &:hover {
+      }
+      
+      &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        z-index: -1;
+        content: '';
+        transition: 0.2s linear;
+        border-radius: 5px;
+      }
+      &:hover:before {
+        background-color: $yellow;
+        z-index: -1;
+        width: 100%;
+      }
+    }
+  }
+}

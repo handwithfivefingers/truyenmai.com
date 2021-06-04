@@ -1,0 +1,62 @@
+$primary-color: #fff;
+$gray: #eee;
+$purple: #ffe8fc;
+$blue: #0d6efd;
+$yellow: #ffe391;
+$dark: gray;
+$hover: rgb(233, 233, 233);
+@mixin cardShow {
+  border-top: 1px solid rgba($primary-color, 1);
+  border-left: 1px solid rgba($primary-color, 1);
+  box-shadow: -3px -3px 8px 3px rgba(#fff, 1), 5px 5px 10px -4px grey;
+}
+
+@mixin cardHide {
+  border-top: 1px solid rgba($primary-color, 1);
+  border-left: 1px solid rgba($primary-color, 1);
+  box-shadow: inset -5px -5px 25px 8px white, inset 5px 5px 10px -4px grey,
+    2px 2px 10px -5px grey;
+}
+
+.list-group {
+  @include cardShow();
+  border-top: 1px solid $primary-color;
+  border-left: 1px solid $primary-color;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  position: Relative;
+  .list-group-item {
+    padding: 0;
+    border: none;
+    background: none;
+    &:not(.active) {
+      border-top: 1px solid $primary-color;
+    }
+    &:not(:last-child) {
+      border-bottom: 2px solid rgba(187, 187, 187, 0.5);
+    }
+  }
+  .active {
+    // color:$blue;
+    // color: #333;
+    // font-weight: 600;
+    // background: inherit;
+    // @include cardHide();
+    // border-radius: 5px;
+     background: $yellow;
+  }
+  a {
+    display: block;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    color: inherit;
+    transition: 0.3s ease-in-out;
+    border: 2px solid transparent;
+    outline: none;
+    border-radius: 5px;
+    &:hover {
+      background: $yellow;
+    }
+  }
+}

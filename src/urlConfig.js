@@ -1,1 +1,1 @@
-export const APIURL = "https://truyenmai.com/wp-json/wp/v2";
+export const APIURL = "http://localhost:3001/";

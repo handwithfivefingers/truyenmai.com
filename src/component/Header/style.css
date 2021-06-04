@@ -1,5 +1,5 @@
 .header {
-    padding:20px;
+    padding: 20px;
     display: flex;
 }
 .header > ul {
@@ -8,51 +8,50 @@
     flex-wrap: wrap;
     list-style-type: none;
     margin: 0 auto;
-    box-shadow:0 10px 15px -5px black;
-    padding:0;
-    border-radius:100%;
+    box-shadow: 0 10px 15px -5px black;
+    padding: 0;
+    border-radius: 100%;
 }
 
 .header > ul > li > a {
-   padding: 10px 20px;
-   background:rgb(248, 248, 248);
-   min-width:100px;
-   transition: 0.2s ease-in-out;
-   cursor: pointer;
-   position:relative;
+    padding: 10px 20px;
+    background: rgb(248, 248, 248);
+    min-width: 100px;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    position: relative;
 }
 .header > ul > li > a:before {
-content:'';
-width:0;
-height:0;
-top:0;
-left:0;
-position:absolute;
-background:transparent;
-transition: 0.5s ease-in-out;
-
+    content: "";
+    width: 0;
+    height: 0;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: transparent;
+    transition: 0.5s ease-in-out;
 }
 .header > ul > li > a:hover:before {
-    background:rgb(235, 235, 235);
-width:100%;
-height:100%;
-z-index:-1;
+    background: rgb(235, 235, 235);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 .header > ul > li > a:hover {
-    background:rgb(235, 235, 235);
+    background: rgb(235, 235, 235);
 }
 .header > ul > li:not(:last-child) > a {
-    border-right:1px solid #eee;
+    border-right: 1px solid #eee;
 }
-.header > ul > li:first-child> a {
+.header > ul > li:first-child > a {
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
 }
-.header > ul > li:last-child >a {
+.header > ul > li:last-child > a {
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
 }
 .header > ul > li > a {
     text-decoration: none;
-    color:inherit;
+    color: inherit;
 }

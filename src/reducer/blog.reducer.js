@@ -15,7 +15,6 @@ export default (state = initState, action) => {
             }
             break;
         case blogConstant.FETCH_BLOG_POST_SUCCESS:
-            console.log(action.payload)
             state = {
                 ...state,
                 loading: false,
