@@ -1,60 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import { params } from '../../helper/params';
 import Header from '../Header';
+import Footer from '../Footer';
+import SideBar from '../Sidebar';
 import './style.scss';
 
 function Layout(props) {
   useEffect(() => {
     return () => {};
   }, []);
-  const side = [
-    {
-      name: 'HTML',
-      path: '/blog/html',
-    },
-    {
-      name: 'CSS',
-      path: '/blog/css',
-    },
-    {
-      name: 'JavaScript',
-      path: '/blog/javascript',
-    },
-    {
-      name: 'ReactJS',
-      path: '/blog/reactjs',
-    },
-    {
-      name: 'NodeJS',
-      path: '/blog/nodejs',
-    },
-  ];
-  const renderSideBar = () => {
+ 
+  // console.log(props);
+  const renderBreadcrumb = () => {
     return (
-      <>
-        <h3 style={{ color: '#333', textAlign: 'left' }}>Categories</h3>
-        <ul className="list-group" style={{ textAlign: 'left' }}>
-          {side.map((item, index) => {
-            return (
-              <li className="list-group-item" key={index}>
-                <NavLink to={item.path}> {item.name}</NavLink>
-              </li>
-            );
-          })}
-        </ul>
-      </>
+      <div className="row">
+        <nav aria-label="breadcrumb">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li className="breadcrumb-item">
+              <NavLink to="/blog">Blog</NavLink>
+            </li>
+            <li className="breadcrumb-item active" aria-current="page">
+              Current
+            </li>
+          </ol>
+        </nav>
+      </div>
     );
   };
   return (
-    <div className="container">
+    <>
       <Header />
-      <div className="row">
-        <div className={props.sidebar ? 'col-md-9' : 'col-md-12'}>
-          {props.children}
+      <div className="container">
+        {props.breadcrumb ? renderBreadcrumb() : ''}
+        <div className="row">
+          <div className={props.sidebar ? 'col-md-9' : 'col-md-12'}>
+            {props.children}
+          </div>
+          {props.sidebar ? (
+            <div className="col-md-3"><SideBar /></div>
+          ) : (
+            ''
+          )}
         </div>
-        {props.sidebar ? <div className="col-md-3">{renderSideBar()}</div> : ''}
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }
 

@@ -7,9 +7,9 @@ function BlogPost(props) {
   useEffect(() => {
     return () => {};
   }, []);
-  console.log(props);
+  // console.log(props);
   return (
-    <Layout sidebar>
+    <Layout sidebar breadcrumb {...props}>
       <div className="content">
         <div className="content-title">Our content</div>
         <div className="content-body"></div>

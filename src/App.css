@@ -5,7 +5,7 @@
   background-size: cover;
   background-position:center; */
   background:linear-gradient(#eee, rgb(220, 250, 255) );
-  height: 100vh;
+  min-height: 100vh;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -21,7 +21,10 @@
     transform: rotate(360deg);
   }
 }
-
+a {
+  text-decoration: none;
+  color:inherit;
+}
 .row {
   display: flex;
   flex-wrap: wrap;
