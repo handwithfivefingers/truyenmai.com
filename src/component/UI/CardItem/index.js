@@ -2,11 +2,15 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { BiCalendarEdit } from 'react-icons/bi';
-import ReactQuill from 'react-quill'; // ES6
 import { Link } from 'react-router-dom';
 import ModalForm from '../Modal';
 import Input from '../Input';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import MyCustomUploadAdapterPlugin from '../../../helper/UploadAdapter';
+import ReactHtmlParser from 'react-html-parser';
 import './style.scss';
+import { useDispatch } from 'react-redux';
 function CardItem(props) {
   const [show, setShow] = useState(false);
 
@@ -16,13 +20,14 @@ function CardItem(props) {
   const [editCat, setEditCat] = useState([]);
   const [editType, setEditType] = useState('');
   const [featureImage, setFeatureImage] = useState([]);
+  const dispatch = useDispatch();
   const handleClose = () => {
     setShow(false);
     setEditPostModal(false);
   };
-
-  useEffect(() => {}, []);
-
+  // useEffect(() => {
+  //   dispatch(FetchImageBlog(item.featured_media))
+  // }, []);
   const EditPost = (props) => {
     return (
       <Modal show={EditPostModal} onHide={handleClose} size="lg">
@@ -32,21 +37,35 @@ function CardItem(props) {
         <Modal.Body>
           <div className="row">
             <div className="col-8 mt-3">
-                <label>Title</label>
-                <Input
-                  className="form-control form-control-sm"
-                  type="text"
-                  placeholder={`${props.title}`}
-                  value={editTitle}
-                  onChange={(e) => setEditTitle(e.target.value)}
-                />
-                <label>Description</label>
-                <ReactQuill
-                  style={{ height: '100px' }}
-                  value={editExcerpt !== '' ? editExcerpt : props.excerpt}
-                  onChange={(e) => OnEdittingExcerpt(e)}
-                />
-              </div>
+              <label>Title</label>
+              <Input
+                className="form-control form-control-sm"
+                type="text"
+                placeholder={`${props.title}`}
+                value={editTitle}
+                onChange={(e) => setEditTitle(e.target.value)}
+              />
+              <label className="mt-3">Description</label>
+              <CKEditor
+                editor={ClassicEditor}
+                data={props.excerpt}
+                config={{ extraPlugins: [MyCustomUploadAdapterPlugin] }} //use
+                // onReady={(editor) => {
+                //   // You can store the "editor" and use when it is needed.
+                //   console.log('Editor is ready to use!', editor);
+                // }}
+                onChange={(event, editor) => {
+                  const data = editor.getData();
+                  console.log({ event, editor, data });
+                }}
+                // onBlur={(event, editor) => {
+                //   console.log('Blur.', editor);
+                // }}
+                // onFocus={(event, editor) => {
+                //   console.log('Focus.', editor);
+                // }}
+              />
+            </div>
 
             <div className="col-4 mt-3">
               <label>Feature Image</label>
@@ -109,11 +128,11 @@ function CardItem(props) {
     form.append('categories', editCat);
     form.append('type', editType);
     form.append('featureImage', featureImage);
-    console.log(editTitle, editExcerpt, editCat, editType, featureImage);
+    // console.log(editTitle, editExcerpt, editCat, editType, featureImage);
   };
-  const OnEdittingExcerpt = (e) => {
-    setEditExcerpt(e.toString());
-  };
+  // const OnEdittingExcerpt = (e) => {
+  //   setEditExcerpt(e.toString());
+  // };
   const renderModal = () => {
     return (
       <ModalForm show={show} handleClose={handleClose} title={props.title}>
@@ -121,33 +140,34 @@ function CardItem(props) {
       </ModalForm>
     );
   };
+
   return (
     <div className="card-ui">
       <div
         className="card-ui-imageContainer"
-        style={{ background: `url(${props.featureImage}) no-repeat center` }}
+        style={{
+          background: `url() no-repeat center`,
+        }}
       >
         <div className="card-ui-cat">
-          {props.categories && props.categories.length > 0
+          {/* {props.categories && props.categories.length > 0
             ? props.categories.map((cat, index) => {
                 return <span key={index}>{cat}</span>;
               })
-            : ''}
+            : ''} */}
         </div>
       </div>
       <div className="card-ui-title">
-        <h4>
-          {props.title.length > 65
-            ? props.title.slice(0, 65).concat(' ...')
-            : props.title}
-        </h4>
+        <h5>
+          {props.title.rendered.length
+            ? ReactHtmlParser(props.title.rendered)
+            : ''}
+        </h5>
       </div>
       <div className="card-ui-content">
-        <p>
-          {props.excerpt.length > 150
-            ? props.excerpt.slice(0, 150).concat(' ...')
-            : props.excerpt}
-        </p>
+        {props.excerpt.rendered.length > 150
+          ? ReactHtmlParser(props.excerpt.rendered.slice(0, 150).concat(' ...'))
+          : ReactHtmlParser(props.excerpt.rendered)}
       </div>
       <div className="card-ui-action">
         <a className="btn" onClick={(e) => setShow(true)}>
@@ -156,9 +176,9 @@ function CardItem(props) {
         <Link className="btn" to={`/blog/${props.slug}`}>
           Access
         </Link>
-        <a className="btn" onClick={() => setEditPostModal(true)}>
+        {/* <a className="btn" onClick={() => setEditPostModal(true)}>
           <BiCalendarEdit />
-        </a>
+        </a> */}
       </div>
       {renderModal()}
       {EditPost(props)}

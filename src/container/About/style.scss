@@ -1,0 +1,15 @@
+.table {
+  th {
+    width: 250px;
+  }
+  td,
+  th {
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .table th {
+    max-width: 200px;
+  }
+}

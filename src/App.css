@@ -4,8 +4,9 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position:center; */
-  background:linear-gradient(#eee, rgb(220, 250, 255) );
+  background:var(--main-bg-color);
   min-height: 100vh;
+  transition:all 0.3s ease-in-out;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -33,7 +34,7 @@ a {
 }
 .card {
   border: 1px solid #eee;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 1);
   padding: 12px;
   flex-basis: 40%;
   max-width: calc((100% - 12px) / 2);

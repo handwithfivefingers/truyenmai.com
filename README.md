@@ -1,3 +1,8 @@
+# Project information
+- Blog web with css
+- API Json-server
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

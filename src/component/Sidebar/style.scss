@@ -1,0 +1,38 @@
+$primary-color: #fff;
+$gray: #eee;
+$purple: #ffe8fc;
+$blue: #0d6efd;
+$yellow: #ffe391;
+$dark: gray;
+$hover: rgb(233, 233, 233);
+
+@mixin cardShow {
+  border-top: 1px solid rgba($primary-color, 1);
+  border-left: 1px solid rgba($primary-color, 1);
+  box-shadow: -3px -3px 8px 3px rgba(#fff, 1), 5px 5px 10px -4px grey;
+}
+
+input.form-control[type='search'] {
+  border-radius: 50px;
+  box-shadow: inset 2px 2px 3px -2px black, inset -2px -2px 3px -2px white;
+  background: var(--main-bg-color);
+  transition: 0.3s linear;
+  &:focus {
+    border-color: var(--main-hover-color);
+    // box-shadow: inset 2px 2px 3px -2px black, inset -2px -2px 3px -2px white,
+    //   -3px -3px 8px 3px rgba(#fff, 1), 5px 5px 10px -4px grey;
+  }
+}
+button[type='submit'] {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--main-text-color);
+  border: none !important ;
+  border-color: inherit;
+  outline: none !important;
+  &:active,
+  &:focus{
+    color: var(--main-hover-color);
+    border: none;
+  }
+}

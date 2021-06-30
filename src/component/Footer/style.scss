@@ -1,0 +1,23 @@
+.footer {
+  margin-top: 20px;
+  padding: 20px 12px;
+  // background:#fff;
+  ul {
+    list-style-type: none;
+    padding: 0;
+    li {
+      width: 100%;
+      height: auto;
+      a {
+        padding: 12px 20px;
+        color: var(--main-text-color);
+      }
+    }
+  }
+}
+.footer-copy-right {
+  margin-top: 20px;
+  p {
+    color: var(--main-text-color);
+  }
+}

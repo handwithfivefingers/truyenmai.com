@@ -5,12 +5,21 @@ $blue: #0d6efd;
 $yellow: #ffe391;
 $dark: gray;
 
+// @mixin cardShow {
+//   border-top: 1px solid rgba($primary-color, 1);
+//   border-left: 1px solid rgba($primary-color, 1);
+//   box-shadow: -3px -3px 8px 3px rgba(#fff, 1), 5px 5px 10px -4px grey;
+// }
 @mixin cardShow {
-  border-top: 1px solid rgba($primary-color, 1);
-  border-left: 1px solid rgba($primary-color, 1);
-  box-shadow: -3px -3px 8px 3px rgba(#fff, 1), 5px 5px 10px -4px grey;
+  transition: all 0.2s ease-in-out;
+  border-top:1px solid var(--border-primary-color);
+  border-left: 1px solid var(--border-primary-color);
+  border-bottom: 1px solid var(--border-second-color);
+  border-right: 1px solid  var(--border-second-color);
+  box-shadow: -3px -3px 8px 3px var(--shadow-primary-color), 5px 5px 10px -4px var(--shadow-second-color);
+  // box-shadow: inset 2px 2px 4px -0px $dark, inset -2px -2px 4px -0px $primary-color,
+  //     -3px -3px 8px 3px $primary-color, 5px 5px 10px -4px $dark;
 }
-
 @mixin cardHide {
   border-top: 1px solid rgba($primary-color, 1);
   border-left: 1px solid rgba($primary-color, 1);
@@ -20,16 +29,19 @@ $dark: gray;
 
 .card-ui {
   @include cardShow;
-  background: rgba($primary-color, 0.5);
-  backdrop-filter: blur(100%);
+  // background: rgba($primary-color, 0.5);
+  // backdrop-filter: blur(100%);
+  background: var(--main-bg-color);
   border-radius: 10px;
   padding: 0.5rem;
   position: Relative;
-  min-height: 250px;
+  min-height: 300px;
 
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+
+  transition: all 0.2s ease-in-out;
   .card-ui-imageContainer {
     background-size: cover;
     max-height: 200px;
@@ -54,10 +66,18 @@ $dark: gray;
       font-weight: 100;
     }
   }
-  .card-ui-title h4,
+  .card-ui-title h5,
   .card-ui-content {
-    padding-top: 0.5rem;
+    padding: 0.5rem;
     text-align: left;
+    color: var(--main-text-color);
+  }
+  .card-ui-title h5 {
+    margin-bottom:0;
+  }
+  .card-ui-content  {
+    // background-image: linear-gradient(360deg, var(--main-bg-color), transparent);
+    padding-bottom:2rem;
   }
   .card-ui-action {
     width: 100%;
@@ -74,10 +94,10 @@ $dark: gray;
       // border-right: 1px solid $dark;
       @include cardShow;
       position: relative;
-      background-color: transparent;
-      color: #333;
+      background-color: var(--main-bg-color);
+      color: var(--main-text-color);
       z-index: 1;
-
+      transition: all 0.2s ease-in-out;
       &:hover {
       }
 
@@ -93,7 +113,7 @@ $dark: gray;
         border-radius: 5px;
       }
       &:hover:before {
-        background-color: $yellow;
+        background-color: var(--main-hover-color);
         z-index: -1;
         width: 100%;
       }

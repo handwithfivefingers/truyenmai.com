@@ -4,60 +4,20 @@ import {
   BsFillLockFill,
   BsFillPersonFill,
   BsForwardFill,
-  BsGeoAlt,
-  BsEnvelopeFill,
 } from 'react-icons/bs';
-
-function Contact(props) {
+function Login(props) {
   const [state, setState] = useState('');
   const [username, SetUsername] = useState('');
   const [password, SetPassword] = useState('');
   useEffect(() => {
     return () => {};
   }, []);
-  const Information = [
-    {
-      name: 'Address',
-      icon: <BsGeoAlt />,
-      description:
-        '606/10/1 Quốc lộ 13, P.Hiệp Bình Phước, Thủ Đức, Tp.Hồ Chí Minh',
-    },
-    {
-      name: 'Email',
-      icon: <BsEnvelopeFill />,
-      description: 'truyenmai95@gmail.com',
-    },
-  ];
+
   return (
-    <Layout breadcrumb title="Contact">
+    <Layout breadcrumb title="Login">
       <div className="row">
-        <div className="col-lg-8 col-md-6 col-sm-12">
-          <div className="list-group">
-            <ul
-              style={{
-                padding: '0.25rem 0.5rem',
-                listStyleType: 'none',
-                textAlign: 'left',
-              }}
-            >
-              {Information.map((item, index) => {
-                return (
-                  <li>
-                    <h5 className="card-title">
-                      <span>{item.icon}</span> {item.name}
-                    </h5>
-                    <p> {item.description} </p>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </div>
         <div className="col-lg-4 col-md-6 col-sm-12">
-          <form
-            className="list-group text-left"
-            style={{ padding: '0.25rem 0.5rem', listStyleType: 'none' }}
-          >
+          <form className="list-group" style={{ padding: '5px' }}>
             <h3>Đăng nhập</h3>
 
             <div className="input-group mb-3">
@@ -82,7 +42,7 @@ function Contact(props) {
                 value={password}
               />
             </div>
-            <button type="submit" style={{ padding: '12px' }}>
+            <button type="submit" style={{padding:'12px'}}>
               Access <BsForwardFill />
             </button>
           </form>
@@ -92,4 +52,4 @@ function Contact(props) {
   );
 }
 
-export default Contact;
+export default Login;

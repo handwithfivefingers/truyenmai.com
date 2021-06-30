@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-import { APIURL } from '../urlConfig';
+import { APIWPURL } from '../urlConfig';
 
 const instance = axios.create({
-    baseURL: APIURL,
+    baseURL: APIWPURL,
 
 });
 
