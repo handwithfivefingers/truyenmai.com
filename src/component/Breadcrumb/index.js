@@ -23,30 +23,28 @@ function Breadcrumb(props) {
                 return (
                   <>
                     {props.match.isExact ? (
-                      <li className="breadcrumb-item">
+                      <li key={index} className="breadcrumb-item">
                         <Link className={`breadcrumb-item`} to={item.path}>
                           {item.name}
                         </Link>
                       </li>
                     ) : (
                       <>
-                      <li className="breadcrumb-item">
-                        <Link className={`breadcrumb-item`} to={item.path}>
-                          {item.name}
-                        </Link>
-                      </li>
-                     <li
-                        className="breadcrumb-item active"
-                        aria-current="page"
-                      >
-                        Current
-                      </li>
+                        <li className="breadcrumb-item">
+                          <Link className={`breadcrumb-item`} to={item.path}>
+                            {item.name}
+                          </Link>
+                        </li>
+                        <li
+                          className="breadcrumb-item active"
+                          aria-current="page"
+                        >
+                          Current
+                        </li>
                       </>
                     )}
                   </>
                 );
-              }
-              if (!props.match.isExact) {
               }
             })}
 

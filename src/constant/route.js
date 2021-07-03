@@ -4,6 +4,7 @@ import BlogPost from './../container/BlogPost';
 import About from './../container/About';
 import Contact from './../container/Contact';
 import Login from './../container/Login';
+import Categories from '../container/Categories';
 export const MenuRoutes = [
   {
     path: '/',
@@ -39,7 +40,12 @@ export const FrontEndRoutes = [
     exact: true,
   },
   {
-    path: '/blog/:slug',
+    path: '/blog/categoy/:slug',
+    component: ({ match }) => <Categories match={match} />,
+    exact: false,
+  },
+  {
+    path: `/blog/:slug`,
     component: ({ match, history }) => (
       <BlogPost match={match} history={history} />
     ),

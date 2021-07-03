@@ -2,16 +2,17 @@
   --background: #eee;
   --text-color: #333;
   --text-size: 16px;
-  
-  --primary-color: #f8f8f8;
 
+  --tomoe-size: calc(400px / 6.5);
+
+  --primary-color: #f8f8f8;
 
   --light-color: #212529;
   --light-background-color: #eee;
   --light-second-color: #727475;
   --light-second-background-color: #f1f1f1;
 
-  --dark-color: #909090;
+  --dark-color: #b8b8b8;
   --dark-background-color: #232420;
   --dark-second-color: #f5f6fa;
   --dark-second-background-color: rgb(54, 54, 54);
@@ -24,7 +25,7 @@
   --second-text-color: var(--light-second-color);
   --main-hover-color: #ffe391;
   --shadow-primary-color: #fff;
-  --shadow-second-color: grey;
+  --shadow-second-color: rgb(87, 87, 87);
   --border-primary-color: #eee;
   --border-second-color: rgb(206, 206, 206);
 }

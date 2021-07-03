@@ -1,17 +1,14 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FetchBlogPost } from '../../action';
+import UserContext from '../../helper/Context';
 
+import './style.scss';
 function Pagination(props) {
   const pagi = useSelector((state) => state.blog.totalpage);
-  const [isActive, setActive] = useState('1');
-
-  const dispatch = useDispatch();
+  const { pagination, SetPagi } = useContext(UserContext);
   
-  useEffect(() => {
-    renderPagination();
-  }, []);
-
+  const dispatch = useDispatch();
   const renderPagination = () => {
     let pagiarr = [];
     let xhtml = '';
@@ -24,10 +21,10 @@ function Pagination(props) {
           return (
             <li
               key={index}
-              className={`page-item ${item == isActive ? 'active' : ''}`}
+              className={`pagi-item ${item == pagination ? 'active' : ''}`}
             >
               <a
-                className="page-link"
+                className="pagi-link"
                 href="#"
                 onClick={() => fetchPostperPage(item)}
               >
@@ -42,7 +39,7 @@ function Pagination(props) {
     }
   };
   const fetchPostperPage = (page) => {
-    setActive(page);
+    SetPagi(page);
     dispatch(FetchBlogPost(page));
   };
   return (

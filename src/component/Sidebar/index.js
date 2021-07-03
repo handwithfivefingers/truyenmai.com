@@ -1,26 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
+import Categories from './../../container/Categories';
 import './style.scss';
 const side = [
   {
     name: 'HTML',
-    path: '/blog/html',
+    path: '/blog/category/html',
   },
   {
     name: 'CSS',
-    path: '/blog/css',
+    path: '/blog/category/css',
   },
   {
     name: 'JavaScript',
-    path: '/blog/javascript',
+    path: '/blog/category/javascript',
   },
   {
     name: 'ReactJS',
-    path: '/blog/reactjs',
+    path: '/blog/category/reactjs',
   },
   {
     name: 'NodeJS',
-    path: '/blog/nodejs',
+    path: '/blog/category/nodejs',
   },
 ];
 function SideBar(props) {
@@ -33,9 +34,12 @@ function SideBar(props) {
     return (
       <>
         <div className="d-flex justify-content-between align-items-center">
-          <h3 style={{ textAlign: 'left' }}>Search</h3>
+          <h3 style={{ textAlign: 'right' }}>Side</h3>
         </div>
-        <div className="dropdown-divider"></div>
+        <div className="container-fluid" style={{ padding: '20px' }}>
+          <div className="list-group"></div>
+        </div>
+
         <div className="row">
           <div className="col mt-3">
             <form className="d-flex">
@@ -60,14 +64,17 @@ function SideBar(props) {
         <div className="d-flex justify-content-between align-items-center">
           <h3 style={{ textAlign: 'left' }}>Categories</h3>
         </div>
-        <div className="dropdown-divider"></div>
+        <div className="container-fluid" style={{ padding: '20px' }}>
+          <div className="list-group"></div>
+        </div>
+
         <div className="row">
           <div className="col mt-3">
             <ul className="list-group" style={{ textAlign: 'left' }}>
               {side.map((item, index) => {
                 return (
                   <li className="list-group-item" key={index}>
-                    <NavLink to={item.path}> {item.name}</NavLink>
+                    <Link to={item.path}> {item.name}</Link>
                   </li>
                 );
               })}
@@ -81,7 +88,7 @@ function SideBar(props) {
     <>
       <div className=" sticky-md-top">
         {renderSearchBar()}
-        <br></br>
+        <br/>
         {renderCategoriesSidebar()}
       </div>
     </>

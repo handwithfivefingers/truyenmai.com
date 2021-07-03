@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { MenuRoutes } from '../../constant/route';
+import UserContext from '../../helper/Context';
 import { BsMoon, BsFillBrightnessHighFill } from 'react-icons/bs';
 import './style.scss';
 function Header(props) {
@@ -10,6 +11,7 @@ function Header(props) {
     { path: '/contact', name: 'Contact', exact: false },
     { path: '/about', name: 'About', exact: false },
   ];
+  const { thememode, setThememode } = useContext(UserContext);
   const [mode, Setmode] = useState(true);
   const [offset, setOffset] = useState(0);
   useEffect(() => {
@@ -19,13 +21,14 @@ function Header(props) {
   }, []);
   // Setup mod
   const renderClass = (e) => {
-    if (document.body.classList.contains('dark')) {
+    if (thememode) {
       document.body.classList.remove('dark');
-      Setmode(true);
+      document.body.classList.add('light');
     } else {
+      document.body.classList.remove('light');
       document.body.classList.add('dark');
-      Setmode(false);
     }
+    setThememode();
   };
   useEffect(() => {
     if (!document.body.classList.contains('light')) {
@@ -45,7 +48,7 @@ function Header(props) {
       </ul>
       <div className="form-check form-switch">
         <button className="btn btn-mode" onClick={(e) => renderClass(e)}>
-          {mode ? (
+          {!thememode ? (
             <i>
               <BsMoon />
             </i>

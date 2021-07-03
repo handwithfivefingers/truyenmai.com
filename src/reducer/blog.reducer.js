@@ -10,6 +10,7 @@ const initState = {
   post: {},
   totalpage: '',
   totalpost: '',
+  image: null,
 };
 
 export default (state = initState, action) => {

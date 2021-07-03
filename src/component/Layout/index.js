@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext, createContext } from 'react';
 import { BiGridAlt } from 'react-icons/bi';
 import { Route } from 'react-router-dom';
 import Header from '../Header';
@@ -7,36 +7,42 @@ import SideBar from '../Sidebar';
 import './style.scss';
 import Pagination from '../Pagination';
 import Breadcrumb from '../Breadcrumb';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
 function Layout(props) {
-  useEffect(() => {
-    return () => {};
-  }, []);
   const renderImage = (img) => {
     return (
-      <div className="container-fluid" style={{ padding: '20px' }}>
-        <div className="list-group">
-          <div
-            className="image-container"
-            style={{
-              width: '100%',
-              padding: '150px',
-              backgroundImage: `url('${img}')`,
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center',
-            }}
-          ></div>
-        </div>
-      </div>
+      <div
+        className="image-container"
+        style={{
+          width: '100%',
+          padding: '150px',
+          backgroundImage: `url(${img})`,
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+        }}
+      ></div>
     );
   };
-
   return (
     <>
       <Header />
-      {props.img ? renderImage(props.img) : ''}
+
+      <div className="container-fluid" style={{ padding: '20px' }}>
+        <div className="list-group">
+          {props.img ? renderImage(props.img) : ''}
+        </div>
+      </div>
       <div className="container clearfix">
-        {props.breadcrumb ? <Route path="/:path" component={Breadcrumb} /> : ''}
+        <div>
+          {props.breadcrumb ? (
+            <Route path="/:path" component={Breadcrumb} />
+          ) : (
+            ''
+          )}
+        </div>
+
         <div className="row">
           <div className={props.sidebar ? 'col-md-9' : 'col-md-12'}>
             {/* Do something like this for Header */}
@@ -55,7 +61,10 @@ function Layout(props) {
                 ''
               )}
             </div>
-            <div className="dropdown-divider"></div>
+            <div className="container-fluid" style={{ padding: '20px' }}>
+              <div className="list-group"></div>
+            </div>
+
             {/* Do something like this for Header */}
             {props.children}
             <div className="mt-3">
@@ -63,7 +72,9 @@ function Layout(props) {
                 {props.pagination ? <Pagination /> : ''}
               </div>
             </div>
-            <div className="dropdown-divider"></div>
+            <div className="container-fluid" style={{ padding: '20px' }}>
+              <div className="list-group"></div>
+            </div>
           </div>
           {props.sidebar ? (
             <div className="col-md-3">
