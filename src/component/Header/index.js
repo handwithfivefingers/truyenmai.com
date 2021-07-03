@@ -1,24 +1,31 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation, useRouteMatch } from 'react-router-dom';
 import { MenuRoutes } from '../../constant/route';
 import UserContext from '../../helper/Context';
-import { BsMoon, BsFillBrightnessHighFill } from 'react-icons/bs';
+import {
+  BsMoon,
+  BsFillBrightnessHighFill,
+  BsThreeDots,
+  BsArrowBarLeft,
+} from 'react-icons/bs';
+
 import './style.scss';
+
 function Header(props) {
-  const route = [
-    { path: '/', name: 'Home', exact: true },
-    { path: '/blog', name: 'Blog', exact: false },
-    { path: '/contact', name: 'Contact', exact: false },
-    { path: '/about', name: 'About', exact: false },
-  ];
   const { thememode, setThememode } = useContext(UserContext);
-  const [mode, Setmode] = useState(true);
-  const [offset, setOffset] = useState(0);
-  useEffect(() => {
-    window.onscroll = () => {
-      setOffset(window.pageYOffset);
-    };
-  }, []);
+  const [mobile, SetMobile] = useState(false);
+  let location = useLocation();
+  let match = useHistory();
+  // const checkLocation = () => {
+  //   if (MenuRoutes.length > 0) {
+  //     MenuRoutes.map((item) => {
+  //       if (match.location.pathname == location.pathname) {
+  //         console.log(match);
+  //       }
+  //     });
+  //   }
+  // };
+
   // Setup mod
   const renderClass = (e) => {
     if (thememode) {
@@ -35,19 +42,61 @@ function Header(props) {
       document.body.classList.add('light');
     }
   }, []);
+
   return (
-    <header className="header sticky-md-top">
-      <ul>
-        {MenuRoutes.map((item, index) => {
-          return (
-            <li key={index}>
-              <Link to={item.path}>{item.name}</Link>
+    <header className="header sticky-top">
+      <nav className="menu-desktop">
+        <ul>
+          {MenuRoutes.map((item, index) => {
+            return (
+              <li key={index}>
+                <Link to={item.path}>{item.name}</Link>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+      <div className="menu-mobile">
+        <span className="menu-toggle" onClick={() => SetMobile(!mobile)}>
+          <BsThreeDots />
+        </span>
+        <nav className={`menu-dropdown ${mobile ? 'active-header' : ''}`}>
+          <ul>
+            {mobile
+              ? MenuRoutes.map((item, index) => {
+                  return (
+                    <li
+                      key={index}
+                      className={`nav-item ${
+                        match.location.pathname == item.path
+                          ? 'nav-item-active'
+                          : ''
+                      }`}
+                    >
+                      <Link
+                        className={`${
+                          match.location.pathname == item.path
+                            ? 'nav-link-item-active'
+                            : ''
+                        }`}
+                        to={item.path}
+                      >
+                        {item.name}
+                      </Link>
+                    </li>
+                  );
+                })
+              : ''}
+            <li className="nav-item">
+              <a href="#" onClick={() => SetMobile(!mobile)}>
+                <BsArrowBarLeft /> Back
+              </a>
             </li>
-          );
-        })}
-      </ul>
-      <div className="form-check form-switch">
-        <button className="btn btn-mode" onClick={(e) => renderClass(e)}>
+          </ul>
+        </nav>
+      </div>
+      <div className=" mode">
+        <button className="btn-mode" onClick={(e) => renderClass(e)}>
           {!thememode ? (
             <i>
               <BsMoon />

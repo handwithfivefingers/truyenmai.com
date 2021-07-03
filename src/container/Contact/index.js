@@ -20,7 +20,8 @@ function Contact(props) {
       name: 'Address',
       icon: <BsGeoAlt />,
       description:
-        '606/10/1 Quốc lộ 13, P.Hiệp Bình Phước, Thủ Đức, Tp.Hồ Chí Minh',
+        // '606/10/1 Quốc lộ 13, P.Hiệp Bình Phước, Thủ Đức, Tp.Hồ Chí Minh',
+        'nullllll l'
     },
     {
       name: 'Email',
@@ -31,7 +32,7 @@ function Contact(props) {
   return (
     <Layout breadcrumb title="Contact">
       <div className="row">
-        <div className="col-lg-8 col-md-6 col-sm-12">
+        <div className="col-lg-8 col-md-6 col-sm-12 mt-4">
           <div className="list-group">
             <ul
               style={{
@@ -53,12 +54,12 @@ function Contact(props) {
             </ul>
           </div>
         </div>
-        <div className="col-lg-4 col-md-6 col-sm-12">
+        <div className="col-lg-4 col-md-6 col-sm-12 mt-4">
           <form
             className="list-group text-left"
             style={{ padding: '0.25rem 0.5rem', listStyleType: 'none' }}
           >
-            <h3>Đăng nhập</h3>
+            <h3>Liên hệ</h3>
 
             <div className="input-group mb-3">
               <span className="input-group-text" id="basic-addon1">

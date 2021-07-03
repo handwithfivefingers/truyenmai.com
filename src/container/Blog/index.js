@@ -16,30 +16,27 @@ function Blog(props) {
 
   return (
     <Layout sidebar pagination breadcrumb title="Our Blog" col {...props}>
-    
       <CSSTransition
         in={props.breadcrumb}
         timeout={500}
         classNames="item-transition"
       >
-        <div className="row">
-          <TransitionGroup className="row">
-            {blog.data &&
-              blog.data.map((post, index) => {
-                return (
-                  <CSSTransition
-                    key={index}
-                    timeout={500}
-                    classNames="item-transition"
-                  >
-                    <div className="col-md-6 col-lg-4 mt-3">
-                      <CardItem {...post} />
-                    </div>
-                  </CSSTransition>
-                );
-              })}
-          </TransitionGroup>
-        </div>
+        <TransitionGroup className="row">
+          {blog.data &&
+            blog.data.map((post, index) => {
+              return (
+                <CSSTransition
+                  key={index}
+                  timeout={500}
+                  classNames="item-transition"
+                >
+                  <div className="col-md-6 col-lg-4 mt-4">
+                    <CardItem {...post} />
+                  </div>
+                </CSSTransition>
+              );
+            })}
+        </TransitionGroup>
       </CSSTransition>
     </Layout>
   );

@@ -1,61 +1,3 @@
-/* .header {
-    padding: 20px;
-    display: flex;
-}
-.header > ul {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    list-style-type: none;
-    margin: 0 auto;
-    box-shadow: 0 10px 15px -5px black;
-    padding: 0;
-    border-radius: 100%;
-}
-
-.header > ul > li > a {
-    padding: 10px 20px;
-    background: rgb(248, 248, 248);
-    min-width: 100px;
-    transition: 0.2s ease-in-out;
-    cursor: pointer;
-    position: relative;
-}
-.header > ul > li > a:before {
-    content: "";
-    width: 0;
-    height: 0;
-    top: 0;
-    left: 0;
-    position: absolute;
-    background: transparent;
-    transition: 0.5s ease-in-out;
-}
-.header > ul > li > a:hover:before {
-    background: rgb(235, 235, 235);
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-.header > ul > li > a:hover {
-    background: rgb(235, 235, 235);
-}
-.header > ul > li:not(:last-child) > a {
-    border-right: 1px solid #eee;
-}
-.header > ul > li:first-child > a {
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
-}
-.header > ul > li:last-child > a {
-    border-bottom-right-radius: 5px;
-    border-top-right-radius: 5px;
-}
-.header > ul > li > a {
-    text-decoration: none;
-    color: inherit;
-} */
-
 $primary-color: #fff;
 $gray: #eee;
 $purple: #ffe8fc;
@@ -63,60 +5,184 @@ $blue: #0d6efd;
 $yellow: #ffe391;
 $dark: gray;
 $hover: rgb(233, 233, 233);
-
 @mixin cardShow {
-  border-top: 1px solid rgba($primary-color, 1);
-  border-left: 1px solid rgba($primary-color, 1);
-  box-shadow: -3px -3px 8px 3px rgba(#fff, 1), 5px 5px 10px -4px grey;
+  transition: all 0.2s ease-in-out;
+  border-top: 1px solid var(--border-primary-color);
+  border-left: 1px solid var(--border-primary-color);
+  border-bottom: 1px solid var(--border-second-color);
+  border-right: 1px solid var(--border-second-color);
+  box-shadow: -3px -3px 8px 3px var(--shadow-primary-color),
+    5px 5px 10px -4px var(--shadow-second-color);
 }
+// Khai báo kích thước tương ứng với màn hình thiết bị
 
+$XS: 480px;
+$SM: 768px;
+$MD: 1024px;
+$XL: 1170px;
+
+// media queries
+
+@mixin Responsive($canvas) {
+  @if $canvas == XS {
+    @media only screen and (max-width: $XS) {
+      @content;
+    }
+  } @else if $canvas == SM {
+    @media only screen and (max-width: $SM) {
+      @content;
+    }
+  } @else if $canvas == MD {
+    @media only screen and (min-width: $SM +1) and (max-width: $XL) {
+      @content;
+    }
+  } @else if $canvas == XL {
+    @media only screen and (min-width: $XL) {
+      @content;
+    }
+  }
+}
+.header {
+  @include Responsive(SM) {
+    justify-content: space-between;
+  }
+  @include Responsive(XS) {
+    justify-content: space-between;
+  }
+}
 .header {
   display: flex;
-  background: rgb(248, 248, 248);
+  justify-content: space-evenly;
+  background: var(--second-bg-color);
   padding: 10px 20px;
   z-index: 9999;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   box-shadow: 0 0 5px -3px #333;
-  ul {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    list-style-type: none;
-    margin: 0 auto;
-    padding: 0;
-    border-radius: 100%;
-    li {
-      a {
-        padding: 10px 20px;
-        background: rgb(248, 248, 248);
-        min-width: 100px;
-        transition: 0.2s ease-in-out;
-        cursor: pointer;
-        position: relative;
-        &:hover {
-          background: rgb(235, 235, 235);
-          color: inherit;
+  .menu-desktop {
+    align-self: center;
+    display: none;
+    @include Responsive(MD) {
+      display: block;
+    }
+    @include Responsive(XL) {
+      display: block;
+    }
+    ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      list-style-type: none;
+      margin: 0 auto;
+      padding: 0;
+      border-radius: 100%;
+      li {
+        a {
+          padding: 10px 20px;
+          // background: var(--second-bg-color);
+          border-radius:99px;
+          min-width: 100px;
+          transition: 0.2s ease-in-out;
+          cursor: pointer;
+          position: relative;
+          &:hover {
+            background: var(--main-hover-color);
+            color: inherit;
+          }
         }
       }
     }
   }
-  .form-switch {
+  .mode {
     font-size: var(--text-size);
     float: right;
-    position: relative;
-    min-width: 100px;
+    z-index: -1;
     .btn-mode {
       height: 32px;
       width: 32px;
       position: relative;
+      @include cardShow();
+      background: var(--second-bg-color);
+      border-radius: 99px !important;
       i {
+        color: var(--main-text-color);
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        padding-bottom:8px;
+        padding-bottom: 8px;
       }
+    }
+  }
+  .menu-mobile {
+    display: none;
+    align-self: center;
+    .menu-toggle {
+      width: 50px;
+    }
+    .menu-dropdown {
+      // transition: all 0.2s ease-in-out;
+      position: absolute;
+      visibility: hidden;
+      opacity: 0;
+      top: 0;
+      left: 0;
+      background: var(--primary-color);
+      height: 100vh;
+      transition: all 0.2s ease-in-out;
+      width: 0;
+      ul {
+        background: var(--second-bg-color);
+        list-style-type: none;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: space-around;
+        margin: 0;
+        height: 100vh;
+        li.nav-item-active {
+          a {
+            box-shadow: inset 2px 2px 5px -2px var(--shadow-second-color),
+              inset -2px -2px 5px -2px var(--shadow-primary-color);
+            background: var(--main-hover-color);
+            color: inherit;
+          }
+        }
+        li.nav-item {
+          width: 100%;
+          height: auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          a {
+            font-size: 1.2rem;
+            border-radius: 99px;
+            min-width: 150px;
+            min-height: 35px;
+            padding: 8px 12px;
+            &:not(.nav-link-item-active) {
+              @include cardShow();
+            }
+            &:active {
+              box-shadow: inset 2px 2px 5px -2px var(--shadow-second-color),
+                inset -2px -2px 5px -2px var(--shadow-primary-color);
+              background: var(--main-hover-color);
+              color: inherit;
+            }
+          }
+        }
+      }
+    }
+    .active-header {
+      visibility: visible;
+      opacity: 1;
+      width: 100%;
+    }
+    @include Responsive(SM) {
+      display: flex;
+    }
+    @include Responsive(XS) {
+      display: flex;
     }
   }
 }

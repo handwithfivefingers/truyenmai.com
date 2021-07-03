@@ -11,7 +11,7 @@ function About(props) {
   return (
     <Layout breadcrumb title="About">
       <div className="row">
-        <div className="col-lg-4 col-md-4 col-sm-12">
+        <div className="col-lg-4 col-md-4 col-sm-12 mt-4">
           {/** Side Bar Skill Progress */}
           <div className="side-skill">
             <ul className="list-group">
@@ -31,7 +31,7 @@ function About(props) {
             </ul>
           </div>
         </div>
-        <div className="col-lg-8 col-md-8 col-sm-12 ">
+        <div className="col-lg-8 col-md-8 col-sm-12 mt-4">
           {/** Main content Skill Progress */}
           <div className="main-skill list-group table-responsive">
             <h3>Experience</h3>
