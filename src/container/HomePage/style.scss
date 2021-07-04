@@ -44,6 +44,7 @@ $XL: 1170px;
   #stars {
     height: 100%;
     object-fit: contain;
+    animation: rotation 60s linear infinite;
   }
   .moon {
     mix-blend-mode: screen;
@@ -116,6 +117,14 @@ $XL: 1170px;
   }
 }
 
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 section {
   position: relative;
   width: 100%;

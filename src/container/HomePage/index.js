@@ -39,7 +39,6 @@ function Homepage(props) {
             to={{
               scaleX: 2,
               scaleY: 2,
-              rotate: 180,
               scrollTrigger: {
                 trigger: '#stars',
                 start: `${
@@ -67,31 +66,31 @@ function Homepage(props) {
             to={{
               x: `${
                 window.outerWidth !== 0 && window.outerWidth >= 769
-                  ? '90%'
+                  ? '110%'
                   : window.outerWidth >= 500 && window.outerWidth < 769
                   ? '100%'
                   : '210%'
               }`,
               y: `${
                 window.outerWidth !== 0 && window.outerWidth >= 769
-                  ? '150%'
+                  ? '120%'
                   : window.outerWidth >= 500 && window.outerWidth < 769
                   ? '300%'
                   : '500%'
               }`,
               scaleX: `${
                 window.outerWidth !== 0 && window.outerWidth >= 769
-                  ? '3'
+                  ? '1.5'
                   : window.outerWidth >= 500 && window.outerWidth < 769
-                  ? '2.5'
-                  : '1.5'
+                  ? '2.2'
+                  : '3'
               }`,
               scaleY: `${
                 window.outerWidth !== 0 && window.outerWidth >= 769
-                  ? '3'
+                  ? '1.5'
                   : window.outerWidth >= 500 && window.outerWidth < 769
-                  ? '2.5'
-                  : '1.5'
+                  ? '2.2'
+                  : '3'
               }`,
               scrollTrigger: {
                 trigger: '.moon',
@@ -155,14 +154,14 @@ function Homepage(props) {
                     : ''
                 }`,
                 scrub: 4,
-                markers: true,
+                // markers: true,
               },
               duration: 1,
             }}
           >
-              <img src={MountainBehind} id="mountains_behind" />
+            <img src={MountainBehind} id="mountains_behind" />
           </Tween>
-        
+
           <Tween
             to={{
               x: '0%',
@@ -190,7 +189,7 @@ function Homepage(props) {
                   },
                   css: {
                     opacity: '1',
-                      zIndex: 2
+                    zIndex: 2,
                   },
                   duration: 0.5,
                 }}
@@ -228,15 +227,14 @@ function Homepage(props) {
                 }`,
                 scrub: 4,
                 css: {
-                  zIndex: 9
-                }
+                  zIndex: 9,
+                },
               },
               duration: 1,
             }}
           >
-                <img src={MountainFront} id="mountains_front" />
+            <img src={MountainFront} id="mountains_front" />
           </Tween>
-        
         </div>
       </div>
     </>
