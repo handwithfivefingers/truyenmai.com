@@ -5,6 +5,7 @@ import About from './../container/About';
 import Contact from './../container/Contact';
 import Login from './../container/Login';
 import Categories from '../container/Categories';
+import NotFound from '../container/NotFound';
 export const MenuRoutes = [
   {
     path: '/',
@@ -39,16 +40,20 @@ export const FrontEndRoutes = [
     component: () => <Home />,
     exact: true,
   },
+  // {
+  //   path: '/blog/category/:slug',
+  //   component: ({ match }) => <Categories match={match} />,
+  //   exact: false,
+  // },
   {
-    path: '/blog/categoy/:slug',
-    component: ({ match }) => <Categories match={match} />,
+    path: '/blog/category',
+    component: () => <Categories />,
     exact: false,
   },
+
   {
-    path: `/blog/:slug`,
-    component: ({ match, history }) => (
-      <BlogPost match={match} history={history} />
-    ),
+    path: '/blog/:slug',
+    component: ({match, location,history}) => <BlogPost match={match} location={location} history={history}/>,
     exact: false,
   },
   {
@@ -56,7 +61,7 @@ export const FrontEndRoutes = [
     component: () => <Blog />,
     exact: false,
   },
-
+  
   {
     path: '/about',
     component: () => <About />,
@@ -71,5 +76,10 @@ export const FrontEndRoutes = [
     path: '/login',
     component: () => <Login />,
     exact: false,
+  },
+  {
+    path: '',
+    component: () => <NotFound />,
+    exact: null,
   },
 ];

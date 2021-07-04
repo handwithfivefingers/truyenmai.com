@@ -3,44 +3,38 @@ import { useSelector, useDispatch } from 'react-redux';
 import Layout from '../../component/Layout';
 import { LoadPostContent } from './../../action';
 import ReactHtmlParser from 'react-html-parser';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import './style.scss';
 function BlogPost(props) {
   const loading = useSelector((state) => state.blog.loading);
+  
   const post = useSelector((state) => state.blog.post);
   const blog = useSelector((state) => state.blog.data);
   const [title, Settitle] = useState('');
   const [content, Setcontent] = useState('');
   const [img, Setimg] = useState('');
   const dispatch = useDispatch();
-  const history = useHistory();
-  console.log(history);
+  let { slug } = useParams();
+
   useEffect(() => {
-    if (props.match.params.slug) {
+    if (slug) {
       if (blog && blog.length > 0) {
-        CheckDefaultPost();
+        blog.find((item) => {
+          if (item.slug === slug) {
+            Settitle(item.title.rendered);
+            Setcontent(item.content.rendered);
+          }
+        });
       } else {
         Setcontent('');
         Settitle('');
-        dispatch(LoadPostContent(props.match.params.slug));
       }
+      dispatch(LoadPostContent(slug));
     }
-  }, [props]);
+  }, [slug]);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-
-  const CheckDefaultPost = () => {
-    if (blog && blog.length > 0) {
-      blog.find((item) => {
-        if (item.slug === props.match.params.slug) {
-          Settitle(item.title.rendered);
-          Setcontent(item.content.rendered);
-        }
-      });
-    }
-  };
 
   const renderContent = () => {
     let xhtml = null;
@@ -58,7 +52,6 @@ function BlogPost(props) {
   };
   return (
     <Layout sidebar breadcrumb {...props} title={`Post Content`} img={img}>
-    
       <div className="content">
         <h3 className="text-center">
           {title ? ReactHtmlParser(title) : renderTitle()}

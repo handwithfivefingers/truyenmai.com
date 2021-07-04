@@ -7,7 +7,7 @@ const initState = {
   },
   loading: false,
   error: '',
-  post: {},
+  post: [],
   totalpage: '',
   totalpost: '',
   image: null,
@@ -38,29 +38,22 @@ export default (state = initState, action) => {
       };
       break;
     case postConstant.FETCH_POST_REQUEST:
-      state = {
+      return state = {
         ...state,
         loading: true,
       };
-      break;
     case postConstant.FETCH_POST_SUCCESS:
-      state = {
+      return state = {
         ...state,
         loading: false,
         post: action.payload.data,
       };
-      break;
     case postConstant.FETCH_POST_FAILURE:
       state = {
         ...state,
         loading: false,
-        post: {},
+        post: [],
         error: action.payload,
-      };
-      break;
-    default:
-      state = {
-        ...state,
       };
       break;
   }

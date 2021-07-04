@@ -10,6 +10,7 @@ import { FrontEndRoutes } from './constant/route';
 import { UserProvider } from './helper/Context';
 import { useSelector } from 'react-redux';
 import LoadingScreen from './helper/LoadingScreen';
+import UserRoute from './component/UserRoute';
 function App() {
   // Pagination Context
   const [pagination, Setpagination] = useState('1');
@@ -23,6 +24,22 @@ function App() {
   };
   const loading = useSelector((state) => state.blog.loading);
   console.log(loading);
+  // const renderUserRoute = () => {
+  //   let xhtml = null;
+  //   if (FrontEndRoutes.length > 0) {
+  //     xhtml = FrontEndRoutes.map((route) => {
+  //       return (
+  //         <UserRoute
+  //           key={route.path}
+  //           component={route.component}
+  //           path={route.path}
+  //           exact={route.exact}
+  //         />
+  //       );
+  //     });
+  //   }
+  //   return xhtml;
+  // };
   return (
     <UserProvider
       value={{
@@ -34,21 +51,22 @@ function App() {
     >
       <div className="App">
         {loading ? <LoadingScreen /> : ''}
-        <Router>
-          <Switch>
-            {FrontEndRoutes.map((route, index) => {
-              console.log(route);
-              return (
-                <Route
-                  key={index}
-                  path={route.path}
-                  component={route.component}
-                  exact={route.exact}
-                />
-              );
-            })}
-          </Switch>
-        </Router>
+      
+          <Router>
+            <Switch>
+              {FrontEndRoutes.map((route) => {
+                return (
+                  <Route
+                    key={route.path}
+                    path={route.path}
+                    component={route.component}
+                    exact={route.exact}
+                  />
+                );
+              })}
+              {/* {renderUserRoute()} */}
+            </Switch>
+          </Router>
       </div>
     </UserProvider>
   );

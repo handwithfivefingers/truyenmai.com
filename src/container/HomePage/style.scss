@@ -1,10 +1,43 @@
+$XS: 480px;
+$SM: 768px;
+$MD: 1024px;
+$XL: 1170px;
+
+// media queries
+
+@mixin Responsive($canvas) {
+  @if $canvas == XS {
+    @media only screen and (max-width: $XS) {
+      @content;
+    }
+  } @else if $canvas == SM {
+    @media only screen and (max-width: $SM) {
+      @content;
+    }
+  } @else if $canvas == MD {
+    @media only screen and (min-width: $SM +1) and (max-width: $XL) {
+      @content;
+    }
+  } @else if $canvas == XL {
+    @media only screen and (min-width: $XL) {
+      @content;
+    }
+  }
+}
+
 .animate-css-front-end {
   background: linear-gradient(#2b1055, #7597de);
   position: relative;
   overflow: hidden;
-  transform: perspective(3d);
-  perspective: 600px;
-  height:200vh;
+  // transform: perspective(3d);
+  // perspective: 600px;
+  height: 200vh;
+  @include Responsive(SM) {
+    height: 200vh;
+  }
+  @include Responsive(XS) {
+    height: 200vh;
+  }
   img {
     width: 100%;
   }
@@ -12,13 +45,22 @@
     height: 100%;
     object-fit: contain;
   }
-  #moon {
+  .moon {
     mix-blend-mode: screen;
     position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(-55%, -50%);
-    animation: loadingggg 25s linear infinite;
+    top: 0px;
+    left: -50%;
+    transform: translate(0%, -50%);
+    // animation: loadingggg 25s linear infinite;
+    @include Responsive(SM) {
+      top: 0;
+      left: -50%;
+    }
+    @include Responsive(XS) {
+      top: 0;
+      left: -150%;
+      transform: translate(100%, 100%);
+    }
   }
   #mountains_behind {
     bottom: 0;
@@ -37,21 +79,24 @@
   .animate-content {
     z-index: 3;
     position: absolute;
-    left: 50%;
+    left: 0;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-100%, 0%);
+    width: 100%;
     h2 {
-      font-size: 4vw;
+      font-size: 6vw;
       color: var(--primary-color);
       text-transform: uppercase;
+      opacity: 1;
     }
     a {
+      opacity: 0;
       text-decoration: none;
       display: inline-block;
-      padding: 8px 50px;
+      padding: 8px 20px;
       background: var(--primary-color);
       border-radius: 40px;
-      margin:20px;
+      margin: 20px;
       font-size: 1.4rem;
       color: #2b1055;
       z-index: 10000;
@@ -70,15 +115,6 @@
     transform: translate(50%, 50%);
   }
 }
-// #text {
-//   position: absolute;
-//   color: var(--primary-color);
-//   font-size: 8vw;
-//   font-weight: 200;
-//   span {
-//     font-weight: 700;
-//   }
-// }
 
 section {
   position: relative;
