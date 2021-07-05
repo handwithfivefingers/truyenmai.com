@@ -35,13 +35,7 @@ function Layout(props) {
         </div>
       </div>
       <div className="container clearfix">
-        <div>
-          {props.breadcrumb ? (
-            <Route path="/:path" component={Breadcrumb} />
-          ) : (
-            ''
-          )}
-        </div>
+        {props.breadcrumb ? <Route path="/:path" component={Breadcrumb} /> : ''}
 
         <div className="row">
           <div className={props.sidebar ? 'col-md-9' : 'col-md-12'}>

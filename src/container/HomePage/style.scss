@@ -77,21 +77,23 @@ $XL: 1170px;
     top: initial;
     z-index: 2;
   }
+  .mainAnimatedClass {
+    z-index: 3 !important;
+  }
   .animate-content {
-    z-index: 3;
+    z-index: 2;
     position: absolute;
     left: 0;
     top: 50%;
     transform: translate(-100%, 0%);
     width: 100%;
     h2 {
-      font-size: 6vw;
+      font-size: 4vw;
       color: var(--primary-color);
       text-transform: uppercase;
       opacity: 1;
     }
     a {
-      opacity: 0;
       text-decoration: none;
       display: inline-block;
       padding: 8px 20px;
