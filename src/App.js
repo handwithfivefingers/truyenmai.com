@@ -22,24 +22,11 @@ function App() {
   const setThememode = () => {
     Setthememode(!thememode);
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const loading = useSelector((state) => state.blog.loading);
   console.log(loading);
-  // const renderUserRoute = () => {
-  //   let xhtml = null;
-  //   if (FrontEndRoutes.length > 0) {
-  //     xhtml = FrontEndRoutes.map((route) => {
-  //       return (
-  //         <UserRoute
-  //           key={route.path}
-  //           component={route.component}
-  //           path={route.path}
-  //           exact={route.exact}
-  //         />
-  //       );
-  //     });
-  //   }
-  //   return xhtml;
-  // };
   return (
     <UserProvider
       value={{
@@ -51,22 +38,22 @@ function App() {
     >
       <div className="App">
         {loading ? <LoadingScreen /> : ''}
-      
-          <Router>
-            <Switch>
-              {FrontEndRoutes.map((route) => {
-                return (
-                  <Route
-                    key={route.path}
-                    path={route.path}
-                    component={route.component}
-                    exact={route.exact}
-                  />
-                );
-              })}
-              {/* {renderUserRoute()} */}
-            </Switch>
-          </Router>
+
+        <Router>
+          <Switch>
+            {FrontEndRoutes.map((route) => {
+              return (
+                <Route
+                  key={route.path}
+                  path={route.path}
+                  component={route.component}
+                  exact={route.exact}
+                />
+              );
+            })}
+            {/* {renderUserRoute()} */}
+          </Switch>
+        </Router>
       </div>
     </UserProvider>
   );
