@@ -2,17 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Layout from '../../component/Layout';
 import { useDispatch, useSelector } from 'react-redux';
 import CardItem from '../../component/UI/CardItem';
-import { FetchBlogPost, FetchImageBlog } from '../../action';
+// import { FetchBlogPost, FetchImageBlog } from '../../action';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import './style.css';
+import './style.scss';
 function Blog(props) {
   const blog = useSelector((state) => state.blog);
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(FetchBlogPost());
-  }, []);
 
   return (
     <Layout sidebar pagination breadcrumb title="Our Blog" col {...props}>

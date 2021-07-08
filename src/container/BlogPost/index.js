@@ -51,7 +51,7 @@ function BlogPost(props) {
     return xhtml;
   };
   return (
-    <Layout sidebar breadcrumb {...props} title={`Post Content`} img={img}>
+    <Layout sidebar breadcrumb {...props} title={`Post Content`} img={img} back>
       <div className="content">
         <h3 className="text-center">
           {title ? ReactHtmlParser(title) : renderTitle()}

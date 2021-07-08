@@ -6,9 +6,14 @@ import Stars from '../../image/stars.png';
 import Newmoon from '../../image/newmoon.png';
 import MountainBehind from '../../image/mountains_behind.png';
 import MountainFront from '../../image/mountains_front.png';
-import Starfall from '../../image/6640.png';
 import { FaGithub, FaFacebook } from 'react-icons/fa';
-import { SplitWords, ScrollTrigger, Tween, Timeline } from 'react-gsap';
+import {
+  SplitWords,
+  ScrollTrigger,
+  Tween,
+  Timeline,
+  SplitChars,
+} from 'react-gsap';
 import { gsap } from 'gsap';
 // import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
@@ -38,19 +43,6 @@ function Homepage(props) {
     return () => window.removeEventListener('scroll', updatePosition);
   }, []);
 
-  // console.log(scrollPosition);
-  // useLayoutEffect(() => {
-  //   stars.current.addEventListener('scroll', () => {
-
-  //   });
-  // }, [scrollPosition]);
-  // useLayoutEffect(() => {
-  //   if (stars !== undefined && stars) {
-  //     stars.current.addEventListener('scroll', OnScrollEvent(this));
-  //     console.log(stars);
-  //     OnScrollEvent(stars.current);
-  //   }
-  // }, []);
   const OnScrollEvent = (el) => {
     if (el !== null && el !== undefined) {
       el.style.transform = `translateY(${scrollPosition * 0.75}px)`;
@@ -71,7 +63,7 @@ function Homepage(props) {
             (scrollPosition / (sectionHeight + sectionY)) * 50 - 50
           }px)`;
         }
-        console.log('scroll:', scrollPosition, '2:', sectionHeight + sectionY);
+        // console.log('scroll:', scrollPosition, '2:', sectionHeight + sectionY);
       }
     }
   };
@@ -99,36 +91,17 @@ function Homepage(props) {
       <ScrollTrigger
         trigger="trigger"
         start={`+=${height - window.outerHeight - 500}`}
-        end="+=100"
-        scrub={4}
+        end="+=50"
+        scrub={3}
         // markers={true}
         pin={true}
       >
-        <Timeline
-          target={
-            <>
-              <SplitWords wrapper={<h2 />}>Time Is Free,</SplitWords>
-              <SplitWords wrapper={<h2 />}>But It’s Priceless</SplitWords>
-            </>
-          }
-        >
-          <Tween to={{ x: '-20px' }} position={0.5} duration={0.1} target={0} />
-          <Tween to={{ x: '0px' }} position={0.5} duration={0.1} target={1} />
-          <Tween to={{ x: '20px' }} position={1} duration={0.2} target={2} />
-          <Tween
-            to={{ x: '-20px' }}
-            position="+=0.5"
-            duration={0.1}
-            target={3}
-          />
-          <Tween to={{ x: '0px' }} position={0.5} duration={0.2} target={4} />
-          <Tween
-            to={{ x: '20px' }}
-            position="+=0.5"
-            duration={0.1}
-            target={5}
-          />
-        </Timeline>
+        {' '}
+        <Tween from={{ x: '-100px' }} stagger={0.1}>
+          <SplitChars wrapper={<h2 style={{ display: 'inline-block', letterSpacing:'0.4rem' }} />}>
+            Time Is Free, But It’s Priceless
+          </SplitChars>
+        </Tween>
       </ScrollTrigger>
     );
     return xhtml;
@@ -137,68 +110,14 @@ function Homepage(props) {
     let xhtml = null;
     if (width) {
       xhtml = (
-        // <Tween
-        //   to={{
-        //     x: `${
-        //       width !== 0 && width >= 769
-        //         ? '110%'
-        //         : width >= 500 && width < 769
-        //         ? '100%'
-        //         : '210%'
-        //     }`,
-        //     y: `${
-        //       width !== 0 && width >= 769
-        //         ? '120%'
-        //         : width >= 500 && width < 769
-        //         ? '300%'
-        //         : '500%'
-        //     }`,
-        //     scaleX: `${
-        //       width !== 0 && width >= 769
-        //         ? '1.5'
-        //         : width >= 500 && width < 769
-        //         ? '2.2'
-        //         : '3'
-        //     }`,
-        //     scaleY: `${
-        //       width !== 0 && width >= 769
-        //         ? '1.5'
-        //         : width >= 500 && width < 769
-        //         ? '2.2'
-        //         : '3'
-        //     }`,
-        //     scrollTrigger: {
-        //       trigger: '.moon',
-        //       start: `${
-        //         width !== 0 && width >= 769
-        //           ? 'top 100px'
-        //           : width >= 500 && width < 769
-        //           ? 'top 5%'
-        //           : 'top -10%'
-        //       }`,
-        //       end: `${
-        //         width !== 0 && width >= 769
-        //           ? '+=1000'
-        //           : width >= 500 && width < 769
-        //           ? '+=950'
-        //           : '+=900'
-        //       }`,
-        //       scrub: 2,
-        //       // markers: true,
-        //     },
-        //   }}
-        // >
-        //   {/* <img src={Moon} className="moon" /> */}
-        //   <img src={Newmoon} id="moon" />
-        // </Tween>
         <Tween
           to={{
             x: `${width}`,
-            y: `${section1 !== null && section1 !== undefined ? section1.current.offsetHeight : height}`,
-            // position: {
-            //   right:'100%',
-            //   bottom:0,
-            // },
+            y: `${
+              section1 !== null && section1 !== undefined
+                ? section1.current.offsetHeight
+                : height
+            }`,
             scaleX: `${
               width !== 0 && width >= 769
                 ? '3'
@@ -223,7 +142,6 @@ function Homepage(props) {
             },
           }}
         >
-          {/* <img src={Moon} className="moon" /> */}
           <img src={Newmoon} id="moon" />
         </Tween>
       );
@@ -237,11 +155,11 @@ function Homepage(props) {
         <Tween
           to={{
             x: '0%',
-            y: `${width > 768 ? '25%' : '50%'}`,
+            y: `${width > 768 ? '135%' : '175%'}`,
             scrollTrigger: {
               trigger: '.animate-content',
               start: 'top 0px',
-              end: 'top 50px',
+              end: 'top 20px',
               scrub: 2,
               // markers: true,
             },
@@ -277,13 +195,6 @@ function Homepage(props) {
 
           <Tween
             to={{
-              // x: `${
-              //   window.outerWidth !== 0 && window.outerWidth >= 769
-              //     ? '90%'
-              //     : window.outerWidth >= 500 && window.outerWidth < 769
-              //     ? '100%'
-              //     : '210%'
-              // }`,
               y: `${
                 window.outerWidth !== 0 && window.outerWidth >= 769
                   ? '-10%'

@@ -6,12 +6,15 @@ import {
   BsForwardFill,
   BsGeoAlt,
   BsEnvelopeFill,
+  BsFillBriefcaseFill,
+  BsFillChatSquareFill
 } from 'react-icons/bs';
 
 function Contact(props) {
-  const [state, setState] = useState('');
   const [username, SetUsername] = useState('');
-  const [password, SetPassword] = useState('');
+  const [Textarea, SetTextarea] = useState('');
+  const [email, SetEmail] = useState('');
+
   useEffect(() => {
     return () => {};
   }, []);
@@ -21,12 +24,12 @@ function Contact(props) {
       icon: <BsGeoAlt />,
       description:
         // '606/10/1 Quốc lộ 13, P.Hiệp Bình Phước, Thủ Đức, Tp.Hồ Chí Minh',
-        'nullllll l'
+        'nullllll l',
     },
     {
       name: 'Email',
       icon: <BsEnvelopeFill />,
-      description: 'truyenmai95@gmail.com',
+      description: 'handgod1995@gmail.com',
     },
   ];
   return (
@@ -70,21 +73,36 @@ function Contact(props) {
                 type="text"
                 placeholder="User name"
                 value={username}
+                onChange={(e) => SetUsername(e.target.value)}
               />
             </div>
             <div className="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">
-                <BsFillLockFill />
+              <span className="input-group-text" id="basic-addon1">
+                <BsFillBriefcaseFill />
               </span>
               <input
                 className="form-control"
-                type="password"
-                placeholder="Password"
-                value={password}
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => SetEmail(e.target.value)}
+              />
+            </div>
+            <div className="input-group mb-3">
+              <span className="input-group-text" id="basic-addon1">
+                <BsFillChatSquareFill />
+              </span>
+              <input
+                className="form-control"
+                type="text"
+                placeholder="Description"
+                value={Textarea}
+                style={{ height: '100px' }}
+                onChange={(e) => SetTextarea(e.target.value)}
               />
             </div>
             <button type="submit" style={{ padding: '12px' }}>
-              Access <BsForwardFill />
+              Send <BsForwardFill />
             </button>
           </form>
         </div>

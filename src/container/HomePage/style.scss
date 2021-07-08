@@ -1,29 +1,5 @@
-$XS: 480px;
-$SM: 768px;
-$MD: 1024px;
-$XL: 1170px;
-
-// media queries
-
-@mixin Responsive($canvas) {
-  @if $canvas == XS {
-    @media only screen and (max-width: $XS) {
-      @content;
-    }
-  } @else if $canvas == SM {
-    @media only screen and (max-width: $SM) {
-      @content;
-    }
-  } @else if $canvas == MD {
-    @media only screen and (min-width: $SM +1) and (max-width: $XL) {
-      @content;
-    }
-  } @else if $canvas == XL {
-    @media only screen and (min-width: $XL) {
-      @content;
-    }
-  }
-}
+@import './../../scss/variable.scss';
+@import './../../scss/responsive.scss';
 
 .animate-css-front-end {
   background: linear-gradient(#2b1055, #7597de);
@@ -134,7 +110,7 @@ $XL: 1170px;
     z-index: 3 !important;
   }
   .animate-content {
-    z-index: 2;
+    z-index: 3;
     position: absolute;
     left: 0;
     top: 50%;

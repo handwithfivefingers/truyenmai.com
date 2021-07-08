@@ -1,3 +1,6 @@
+@import './../../scss/variable.scss';
+@import './../../scss/responsive.scss';
+
 .pagination {
   padding-top: 20px;
   height: auto;
@@ -9,26 +12,18 @@
       transition: all 0.2 ease-in-out;
       padding: 10px 16px;
       border-radius: 999px;
-      border-top: 1px solid var(--border-primary-color);
-      border-left: 1px solid var(--border-primary-color);
-      border-bottom: 1px solid var(--border-second-color);
-      border-right: 1px solid var(--border-second-color);
-      background: var(--main-bg-color);
-      box-shadow: -3px -3px 8px 3px var(--shadow-primary-color),
-        5px 5px 10px -4px var(--shadow-second-color);
+       @include cardShowmini();
 
       &:hover {
         background: var(--main-hover-color);
       }
       &:active {
-        box-shadow: inset 2px 2px 5px -2px var(--shadow-second-color),
-          inset -2px -2px 5px -2px var(--shadow-primary-color);
+        @include cardShowmini();
       }
     }
     &.active {
       a {
-        box-shadow: inset 2px 2px 5px -2px var(--shadow-second-color),
-          inset -2px -2px 5px -2px var(--shadow-primary-color);
+        @include Active();
         background: var(--main-hover-color);
       }
     }

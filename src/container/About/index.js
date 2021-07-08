@@ -1,39 +1,122 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import { ProgressBar } from 'react-bootstrap';
 import Layout from '../../component/Layout';
 import './style.scss';
 function About(props) {
-  const [state, setState] = useState('');
+  const [height, setHeight] = useState(null);
+  const heightRef = useRef(null);
+  const processRef = useRef(null);
+  const [currentPosition, setPosition] = useState(0);
 
-  useEffect(() => {
-    return () => {};
+  useLayoutEffect(() => {
+    function updatePosition() {
+      setPosition(window.pageYOffset);
+    }
+    window.addEventListener('scroll', updatePosition);
+    updatePosition();
+    return () => window.removeEventListener('scroll', updatePosition);
   }, []);
 
+  useEffect(() => {
+
+    // console.log(
+    //   'Componnent:',
+    //   heightRef.current.offsetHeight,
+    //   'Height Display',
+    //   window.innerHeight,
+    //   'Full page Height',
+    //   document.body.getBoundingClientRect().height,
+    //   'Current Top:',
+    //   currentPosition,
+    //   'Component - Top:',
+    //   heightRef.current.getBoundingClientRect().top,
+    // );
+    // console.log(
+    //   'Height Display:',
+    //   window.innerHeight,
+    //   'Current Top:',
+    //   currentPosition,
+    //   'Center View: ',
+    //   window.innerHeight / 2 + currentPosition
+    // );
+    if (heightRef.current.offsetHeight > 0) {
+      setHeight(heightRef.current.offsetHeight);
+      let com = heightRef.current.querySelectorAll('.main-skill');
+      let span = document.getElementsByClassName('note-timeline');
+      for (let i = 0; i < span.length; i++) {
+        span[i].style.top = `calc(${
+          window.innerHeight / 2 + currentPosition
+        }px - 70px)`;
+      }
+      // Drawing Timeline
+      Drawing2D(currentPosition);
+
+      com.forEach((element, index) => {
+        if (element.getBoundingClientRect().top < 150) {
+          // console.log('elment:', element.getBoundingClientRect().top + 150);
+          element.classList.add('transition-active');
+          element.classList.remove('transition-non');
+          // processRef.current.style.height = `${
+          //   element.getBoundingClientRect().top + 150
+          // }px`;
+        } else {
+          element.classList.add('transition-non');
+          element.classList.remove('transition-active');
+        }
+      });
+    }
+
+    return () => {};
+  }, [currentPosition]);
+  const Drawing2D = (position) => {
+    const ctx = processRef.current.getContext('2d');
+    if (!processRef.current.getContext) {
+      return;
+    }
+    ctx.strokeStyle = `#ffe391`;
+    ctx.lineWidth = 100;
+
+    // Length to offset the dashes
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    // draw a line
+    ctx.beginPath();
+    ctx.moveTo(1, 0);
+    ctx.lineTo(1, position);
+    ctx.stroke();
+  };
   return (
-    <Layout breadcrumb title="About">
-      <div className="row">
-        <div className="col-lg-4 col-md-4 col-sm-12 mt-4">
-          {/** Side Bar Skill Progress */}
-          <div className="side-skill">
-            <ul className="list-group">
-              <h3>Skill</h3>
-              <li className="list-group-item">
-                <a>Photoshop</a>
-              </li>
-              <li className="list-group-item">
-                <a>Illustrator</a>
-              </li>
-              <li className="list-group-item">
-                <a>Sketchup 3D</a>
-              </li>
-              <li className="list-group-item">
-                <a>AutoCad</a>
-              </li>
-            </ul>
-          </div>
+    <Layout
+      breadcrumb
+      title="About"
+      img={`https://enijobs.com/wp-content/uploads/2018/10/logo_CV.jpg`}
+    >
+      <div className="row"></div>
+      <div className="row about-content" style={{ overflowX: 'hidden' }}>
+        <div
+          className="side-time-line"
+          style={{
+            height: `${
+              heightRef.current !== null ? heightRef.current.offsetHeight : ''
+            }px`,
+          }}
+        >
+          <canvas
+            id="canvas"
+            height={`${height}`}
+            width="20"
+            className="process-bar"
+            style={{ height: `${height}px` }}
+            ref={processRef}
+          ></canvas>
         </div>
-        <div className="col-lg-8 col-md-8 col-sm-12 mt-4">
+        <div
+          // className="col-lg-8 col-md-10 mt-4 mb-4 main-content"
+          className="main-content"
+          ref={heightRef}
+        >
+          <h3>My CV </h3>
           {/** Main content Skill Progress */}
-          <div className="main-skill list-group table-responsive">
+          <div className="main-skill list-group table-responsive transition-non">
             <h3>Experience</h3>
             <table className="table">
               <thead>

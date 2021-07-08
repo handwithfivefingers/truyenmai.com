@@ -1,21 +1,7 @@
-$primary-color: #fff;
-$gray: #eee;
-$purple: #ffe8fc;
-$blue: #0d6efd;
-$yellow: #ffe391;
-$dark: gray;
-$hover: rgb(233, 233, 233);
+@import './../../scss/variable.scss';
+@import './../../scss/responsive.scss';
 
-@mixin cardShow {
-  transition: all 0.2s ease-in-out;
-  border-top:1px solid var(--border-primary-color);
-  border-left: 1px solid var(--border-primary-color);
-  border-bottom: 1px solid var(--border-second-color);
-  border-right: 1px solid  var(--border-second-color);
-  box-shadow: -3px -3px 8px 3px var(--shadow-primary-color), 5px 5px 10px -4px var(--shadow-second-color);
-}
-
-.list-group  {
+.list-group {
   @include cardShow();
   // background: rgba(255, 255, 255, 1);
   border-radius: 10px;
@@ -32,7 +18,7 @@ $hover: rgb(233, 233, 233);
     }
   }
   .active {
-     background:  var(--main-hover-color);
+    background: var(--main-hover-color);
   }
   a {
     display: block;
@@ -53,9 +39,17 @@ $hover: rgb(233, 233, 233);
   color: var(--main-text-color);
 }
 .image-container {
-  border-top:2px solid var(--border-primary-color);
+  border-top: 2px solid var(--border-primary-color);
   border-left: 2px solid var(--border-primary-color);
   border-bottom: 2px solid var(--border-second-color);
-  border-right: 2px solid  var(--border-second-color);
-  border-radius:12px;
+  border-right: 2px solid var(--border-second-color);
+  border-radius: 12px;
+}
+.icon-hover {
+  color: var(--main-text-color);
+  cursor: pointer;
+  transition:all 0.2s ease-in-out;
+  &:hover {
+    color: var(--main-hover-color);
+  }
 }

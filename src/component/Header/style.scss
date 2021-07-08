@@ -1,47 +1,8 @@
-$primary-color: #fff;
-$gray: #eee;
-$purple: #ffe8fc;
-$blue: #0d6efd;
-$yellow: #ffe391;
-$dark: gray;
-$hover: rgb(233, 233, 233);
-@mixin cardShow {
-  transition: all 0.2s ease-in-out;
-  border-top: 1px solid var(--border-primary-color);
-  border-left: 1px solid var(--border-primary-color);
-  border-bottom: 1px solid var(--border-second-color);
-  border-right: 1px solid var(--border-second-color);
-  box-shadow: -3px -3px 8px 3px var(--shadow-primary-color),
-    5px 5px 10px -4px var(--shadow-second-color);
-}
+@import './../../scss/variable.scss';
+@import './../../scss/responsive.scss';
+
 // Khai báo kích thước tương ứng với màn hình thiết bị
 
-$XS: 480px;
-$SM: 768px;
-$MD: 1024px;
-$XL: 1170px;
-
-// media queries
-
-@mixin Responsive($canvas) {
-  @if $canvas == XS {
-    @media only screen and (max-width: $XS) {
-      @content;
-    }
-  } @else if $canvas == SM {
-    @media only screen and (max-width: $SM) {
-      @content;
-    }
-  } @else if $canvas == MD {
-    @media only screen and (min-width: $SM +1) and (max-width: $XL) {
-      @content;
-    }
-  } @else if $canvas == XL {
-    @media only screen and (min-width: $XL) {
-      @content;
-    }
-  }
-}
 .header {
   @include Responsive(SM) {
     justify-content: space-between;
@@ -50,6 +11,7 @@ $XL: 1170px;
     justify-content: space-between;
   }
 }
+
 .header {
   display: flex;
   justify-content: space-evenly;
@@ -79,8 +41,7 @@ $XL: 1170px;
       li {
         a {
           padding: 10px 20px;
-          // background: var(--second-bg-color);
-          border-radius:99px;
+          border-radius: 99px;
           min-width: 100px;
           transition: 0.2s ease-in-out;
           cursor: pointer;
@@ -101,7 +62,7 @@ $XL: 1170px;
       height: 32px;
       width: 32px;
       position: relative;
-      @include cardShow();
+      @include cardShowmini();
       background: var(--second-bg-color);
       border-radius: 99px !important;
       i {
@@ -142,9 +103,7 @@ $XL: 1170px;
         height: 100vh;
         li.nav-item-active {
           a {
-            box-shadow: inset 2px 2px 5px -2px var(--shadow-second-color),
-              inset -2px -2px 5px -2px var(--shadow-primary-color);
-            background: var(--main-hover-color);
+            @include Active();
             color: inherit;
           }
         }
@@ -164,9 +123,7 @@ $XL: 1170px;
               @include cardShow();
             }
             &:active {
-              box-shadow: inset 2px 2px 5px -2px var(--shadow-second-color),
-                inset -2px -2px 5px -2px var(--shadow-primary-color);
-              background: var(--main-hover-color);
+              @include Active();
               color: inherit;
             }
           }

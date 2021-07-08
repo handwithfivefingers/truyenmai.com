@@ -8,7 +8,7 @@ function Breadcrumb(props) {
   //   <NavLink to={match.url || ''}>{match.params.path}</NavLink>
   // </li>
   // <Route path={`${match.url}/:path`} component={Breadcrumb} />
-  // console.log(props);
+  // console.log('Breadcrumb', props);
   return (
     <>
       <div className="row">

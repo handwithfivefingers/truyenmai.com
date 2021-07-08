@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext, createContext } from 'react';
-import { BiGridAlt } from 'react-icons/bi';
-import { Route } from 'react-router-dom';
+
+import { BsFillCaretLeftFill, BsFillGrid3X3GapFill } from 'react-icons/bs';
+import { Route, useHistory } from 'react-router-dom';
 import Header from '../Header';
 import Footer from '../Footer';
 import SideBar from '../Sidebar';
@@ -10,6 +11,7 @@ import Breadcrumb from '../Breadcrumb';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 function Layout(props) {
+  let history = useHistory();
   const renderImage = (img) => {
     return (
       <div
@@ -41,11 +43,22 @@ function Layout(props) {
           <div className={props.sidebar ? 'col-md-9' : 'col-md-12'}>
             {/* Do something like this for Header */}
             <div className="d-flex justify-content-between align-items-center">
-              <h3 style={{ textAlign: 'left' }}>{props.title}</h3>
+              {/** Title Content Setup */}
+              {props.back ? (
+                <BsFillCaretLeftFill
+                  onClick={() => history.goBack()}
+                  className="icon-hover"
+                  size="22"
+                  animation="spin"
+                />
+              ) : (
+                ''
+              )}
+              <h3 style={{ textAlign: 'right' }}>{props.title}</h3>
               {props.col ? (
                 <span className="layout-icon">
                   Column:
-                  <BiGridAlt
+                  <BsFillGrid3X3GapFill
                     className="icon-hover"
                     size="22"
                     animation="spin"
@@ -58,9 +71,10 @@ function Layout(props) {
             <div className="container-fluid" style={{ padding: '20px' }}>
               <div className="list-group"></div>
             </div>
-
             {/* Do something like this for Header */}
+
             {props.children}
+            {/**Pagination */}
             <div className="mt-3">
               <div className="col-md-12">
                 {props.pagination ? <Pagination /> : ''}

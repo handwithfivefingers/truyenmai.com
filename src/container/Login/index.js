@@ -5,6 +5,7 @@ import {
   BsFillPersonFill,
   BsForwardFill,
 } from 'react-icons/bs';
+import './style.scss';
 function Login(props) {
   const [state, setState] = useState('');
   const [username, SetUsername] = useState('');
@@ -29,6 +30,7 @@ function Login(props) {
                 type="text"
                 placeholder="User name"
                 value={username}
+                onChange={(e) => SetUsername(e.target.value)}
               />
             </div>
             <div className="input-group mb-3">
@@ -40,9 +42,10 @@ function Login(props) {
                 type="password"
                 placeholder="Password"
                 value={password}
+                onChange={(e) => SetPassword(e.target.value)}
               />
             </div>
-            <button type="submit" style={{padding:'12px'}}>
+            <button type="submit" style={{ padding: '12px' }}>
               Access <BsForwardFill />
             </button>
           </form>

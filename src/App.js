@@ -8,9 +8,10 @@ import {
 } from 'react-router-dom';
 import { FrontEndRoutes } from './constant/route';
 import { UserProvider } from './helper/Context';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LoadingScreen from './helper/LoadingScreen';
 import UserRoute from './component/UserRoute';
+import { FetchBlogPost } from './action';
 function App() {
   // Pagination Context
   const [pagination, Setpagination] = useState('1');
@@ -22,11 +23,13 @@ function App() {
   const setThememode = () => {
     Setthememode(!thememode);
   };
+  const dispatch = useDispatch();
   useEffect(() => {
-    window.scrollTo(0, 0);
+    dispatch(FetchBlogPost());
   }, []);
+
   const loading = useSelector((state) => state.blog.loading);
-  console.log(loading);
+  // console.log(loading);
   return (
     <UserProvider
       value={{
@@ -37,7 +40,7 @@ function App() {
       }}
     >
       <div className="App">
-        {loading ? <LoadingScreen /> : ''}
+        {/* {loading ? <LoadingScreen /> : ''} */}
 
         <Router>
           <Switch>

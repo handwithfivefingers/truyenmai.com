@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './style.scss';
+import { BsFillCaretUpFill } from 'react-icons/bs';
 function Footer(props) {
   useEffect(() => {
     return () => {};
@@ -7,8 +8,18 @@ function Footer(props) {
 
   return (
     <footer className="container footer">
+      <div
+        className="scroll-top"
+        onClick={() => {
+          window.scrollTo(0, 0);
+        }}
+      >
+        <span>
+          <BsFillCaretUpFill />
+        </span>
+      </div>
       <div className="row ">
-        <div className="col-md-3 col-sm-12 list-group mt-4">
+        <div className="col-md-3 col-sm-12 mt-4">
           <div className="footer-left">
             <h5>More info</h5>
             <ul className="footer-left-bar">
@@ -24,10 +35,12 @@ function Footer(props) {
             </ul>
           </div>
         </div>
-        <div className="offset-md-1 col-md-4  col-sm-12 list-group mt-4">
+
+        <div className=" col-md-4  col-sm-12  mt-4">
           <h5>Newfeeds</h5>
         </div>
-        <div className=" offset-md-1 col-md-3 col-sm-12  list-group mt-4">
+
+        <div className=" col-md-3 col-sm-12   mt-4">
           <div className="footer-right">
             <h5>Project đã thực hiện</h5>
             <ul className="footer-right-bar">
@@ -43,7 +56,7 @@ function Footer(props) {
             </ul>
           </div>
         </div>
-        <div className="col-12 list-group footer-copy-right mt-4">
+        <div className="col-12  footer-copy-right mt-4">
           <p>Copyright By FF</p>
         </div>
       </div>
