@@ -4,9 +4,14 @@
 .footer {
   margin-top: 20px;
   padding: 20px 12px;
+
+  // border-top: 1px solid #bbb;
+  background: var(--second-bg-color);
+  box-shadow: 0 0px 5px -3px #333;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   .footer-left,
   .footer-right {
-    height: 100%;
     ul {
       height: 100%;
     }
@@ -14,7 +19,7 @@
   ul {
     list-style-type: none;
     padding: 0;
-    margin:0;
+    margin: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -26,7 +31,7 @@
         padding: 0.5rem 1rem;
         width: 100%;
         cursor: pointer;
-        background: var(--main-bg-color);
+        background: transparent;
         color: var(--main-text-color);
         &:hover {
           background: var(--main-hover-color);
@@ -53,6 +58,7 @@
     background: var(--main-bg-color);
     opacity: 0.3;
     transition: all 0.2s ease-in-out;
+    z-index: 2;
     &:hover {
       opacity: 1;
     }

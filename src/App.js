@@ -57,7 +57,9 @@ function App() {
             {/* {renderUserRoute()} */}
           </Switch>
         </Router>
+     
       </div>
+   
     </UserProvider>
   );
 }

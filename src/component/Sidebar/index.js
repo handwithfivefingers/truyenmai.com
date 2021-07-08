@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Route } from 'react-router-dom';
 import Categories from './../../container/Categories';
+import { BsLayersFill } from 'react-icons/bs';
 import './style.scss';
 const side = [
   {
@@ -42,7 +43,7 @@ function SideBar(props) {
 
         <div className="row">
           <div className="col mt-3">
-            <form className="d-flex">
+            <form className="d-flex" onSubmit={() => alert('Sorry, this function is not available yet')}>
               <input
                 className="form-control me-2"
                 type="search"
@@ -54,6 +55,9 @@ function SideBar(props) {
               </button>
             </form>
           </div>
+          <a href="#" className="mt-3" style={{ textAlign: 'left' }} onClick={() => alert('Sorry, this function is not available yet')}>
+            More Filter <BsLayersFill />
+          </a>
         </div>
       </>
     );
@@ -88,7 +92,7 @@ function SideBar(props) {
     <>
       <div className=" sticky-md-top">
         {renderSearchBar()}
-        <br/>
+        <br />
         {renderCategoriesSidebar()}
       </div>
     </>

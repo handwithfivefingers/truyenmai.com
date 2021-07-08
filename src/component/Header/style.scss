@@ -14,7 +14,7 @@
 
 .header {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   background: var(--second-bg-color);
   padding: 10px 20px;
   z-index: 9999;
@@ -24,6 +24,7 @@
   .menu-desktop {
     align-self: center;
     display: none;
+    width:100%;
     @include Responsive(MD) {
       display: block;
     }
@@ -40,7 +41,7 @@
       border-radius: 100%;
       li {
         a {
-          padding: 10px 20px;
+          padding: 8px 25px;
           border-radius: 99px;
           min-width: 100px;
           transition: 0.2s ease-in-out;
@@ -78,8 +79,42 @@
   .menu-mobile {
     display: none;
     align-self: center;
-    .menu-toggle {
-      width: 50px;
+    div.menu-toggle {
+      height: 30px;
+      width: 35px;
+      position: relative;
+      cursor: pointer;
+      &:hover {
+        span {
+          background: var(--main-hover-color);
+        }
+      }
+      span {
+        position: absolute;
+        background: var(--main-text-color);
+        height: 5px;
+        width: 5px;
+        border-radius: 50px;
+        transform: translate(-50%, 0);
+        &:nth-child(1) {
+          top: 50%;
+          left: 0;
+          animation: hamburger 1.8s linear infinite;
+        }
+        &:nth-child(2) {
+          top: 50%;
+          left: 50%;
+          animation: hamburger 1.8s linear infinite 0.2s;
+        }
+        &:nth-child(3) {
+          top: 50%;
+          left: 100%;
+          animation: hamburger 1.8s linear infinite 0.4s;
+        }
+      }
+    }
+
+    &:active {
     }
     .menu-dropdown {
       // transition: all 0.2s ease-in-out;
@@ -141,5 +176,22 @@
     @include Responsive(XS) {
       display: flex;
     }
+  }
+}
+@keyframes hamburger {
+  0% {
+    transform: translateY(0%);
+  }
+  25% {
+    transform: translateY(-50%);
+  }
+  50% {
+    transform: translateY(0%);
+  }
+  75% {
+    transform: translateY(50%);
+  }
+  100% {
+    transform: translateY(0%);
   }
 }

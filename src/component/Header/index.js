@@ -57,9 +57,11 @@ function Header(props) {
         </ul>
       </nav>
       <div className="menu-mobile">
-        <span className="menu-toggle" onClick={() => SetMobile(!mobile)}>
-          <BsThreeDots />
-        </span>
+        <div className="menu-toggle" onClick={() => SetMobile(!mobile)}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
         <nav className={`menu-dropdown ${mobile ? 'active-header' : ''}`}>
           <ul>
             {mobile

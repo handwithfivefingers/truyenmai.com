@@ -166,7 +166,7 @@ a {
   position: relative;
   max-height: 300px;
   min-height: 250px;
-  transition: 0.2s linear;
+  transition: all 0.2s linear;
 }
 .action {
   position: absolute;

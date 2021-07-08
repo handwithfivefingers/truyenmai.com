@@ -57,10 +57,10 @@ function Homepage(props) {
         let elmtright = section2.current.querySelector('.section-right');
         if (scrollPosition > section2.current.getBoundingClientRect().top) {
           elmtleft.style.transform = `translateY(${
-            (scrollPosition / (sectionHeight + sectionY)) * 50 - 50
+            (scrollPosition / (sectionHeight + sectionY)) * 50 - 100
           }px)`;
           elmtright.style.transform = `translateY(${
-            (scrollPosition / (sectionHeight + sectionY)) * 50 - 50
+            (scrollPosition / (sectionHeight + sectionY)) * 50 - 100
           }px)`;
         }
         // console.log('scroll:', scrollPosition, '2:', sectionHeight + sectionY);
@@ -98,9 +98,16 @@ function Homepage(props) {
       >
         {' '}
         <Tween from={{ x: '-100px' }} stagger={0.1}>
-          <SplitChars wrapper={<h2 style={{ display: 'inline-block', letterSpacing:'0.4rem' }} />}>
-            Time Is Free, But It’s Priceless
+          <SplitChars
+            wrapper={
+              <h2
+                style={{ display: 'inline-block', letterSpacing: '0.2rem' }}
+              />
+            }
+          >
+            Time Is Free, But It’s
           </SplitChars>
+          <h2>Priceless</h2>
         </Tween>
       </ScrollTrigger>
     );

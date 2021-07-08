@@ -9,7 +9,7 @@ import {
   BsFillBriefcaseFill,
   BsFillChatSquareFill
 } from 'react-icons/bs';
-
+import { FaGithub, FaFacebook } from 'react-icons/fa';
 function Contact(props) {
   const [username, SetUsername] = useState('');
   const [Textarea, SetTextarea] = useState('');
@@ -30,7 +30,16 @@ function Contact(props) {
       name: 'Email',
       icon: <BsEnvelopeFill />,
       description: 'handgod1995@gmail.com',
+    }, {
+      name:'Facebook',
+      icon: <FaFacebook />,
+      description: 'Facebook'
     },
+    {
+      name:'Github',
+      icon: <FaGithub />,
+      description: 'Github'
+    }
   ];
   return (
     <Layout breadcrumb title="Contact">

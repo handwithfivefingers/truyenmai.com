@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { BiCalendarEdit } from 'react-icons/bi';
@@ -11,7 +10,7 @@ import MyCustomUploadAdapterPlugin from '../../../helper/UploadAdapter';
 import ReactHtmlParser from 'react-html-parser';
 import './style.scss';
 import { useDispatch } from 'react-redux';
-
+import { BsForwardFill } from 'react-icons/bs';
 function CardItem(props) {
   const [show, setShow] = useState(false);
   const [EditPostModal, setEditPostModal] = useState(false);
@@ -181,14 +180,14 @@ function CardItem(props) {
       </div>
       <div className="card-ui-action">
         <ul className="card-ui-block">
-          <li>
+          {/* <li>
             <a className="card-ui-item" onClick={(e) => setShow(true)}>
               Excerpt
             </a>
-          </li>
+          </li>*/}
           <li>
             <Link className="card-ui-item" to={`/blog/${props.slug}`}>
-              Access
+              Access <BsForwardFill />
             </Link>
           </li>
         </ul>

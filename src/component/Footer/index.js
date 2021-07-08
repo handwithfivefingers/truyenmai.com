@@ -7,11 +7,11 @@ function Footer(props) {
   }, []);
 
   return (
-    <footer className="container footer">
+    <footer className="container-fluid footer">
       <div
         className="scroll-top"
         onClick={() => {
-          window.scrollTo(0, 0);
+          window.scrollTo({top: 0, behavior: 'smooth'});
         }}
       >
         <span>
@@ -21,7 +21,7 @@ function Footer(props) {
       <div className="row ">
         <div className="col-md-3 col-sm-12 mt-4">
           <div className="footer-left">
-            <h5>More info</h5>
+            <h5>Latest Post</h5>
             <ul className="footer-left-bar">
               <li>
                 <a className="footer-link"> Link 1</a>
@@ -37,29 +37,32 @@ function Footer(props) {
         </div>
 
         <div className=" col-md-4  col-sm-12  mt-4">
-          <h5>Newfeeds</h5>
+          <h5>Just a quote</h5>
+            <p>"High Risk, High Reward "</p>
+            <p>"Inaction Brings Doubt and Fear… "</p>
         </div>
 
         <div className=" col-md-3 col-sm-12   mt-4">
           <div className="footer-right">
-            <h5>Project đã thực hiện</h5>
+            <h5>My Project</h5>
             <ul className="footer-right-bar">
               <li>
-                <a className="footer-link"> Link 1</a>
+                <a className="footer-link">WEB Blog</a>
               </li>
               <li>
-                <a className="footer-link"> Link 2</a>
+                <a className="footer-link">WEB Ecommerce</a>
               </li>
               <li>
-                <a className="footer-link"> Link 3</a>
+                <a className="footer-link">WEB To-Do List</a>
               </li>
             </ul>
           </div>
         </div>
         <div className="col-12  footer-copy-right mt-4">
-          <p>Copyright By FF</p>
+          <p>Copyright {new Date().getFullYear()} - Design by side</p>
         </div>
       </div>
+      <div className="sticky-bottom-cus"></div>
     </footer>
   );
 }
