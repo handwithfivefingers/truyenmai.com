@@ -24,11 +24,6 @@ $hover: rgb(233, 233, 233);
   box-shadow: -2px -2px 3px -1px var(--shadow-primary-color),
     2px 2px 3px -1px var(--shadow-second-color);
 }
-@mixin Active {
-  box-shadow: inset 2px 2px 5px -2px var(--shadow-second-color),
-    inset -2px -2px 5px -2px var(--shadow-primary-color);
-  background: var(--main-hover-color);
-}
 
 @mixin Input {
   box-shadow: inset 2px 2px 5px -2px var(--shadow-second-color),
@@ -38,4 +33,23 @@ $hover: rgb(233, 233, 233);
   border-bottom: 1px solid var(--border-second-color);
   border-right: 1px solid var(--border-second-color);
   background: var(--main-bg-color);
+}
+@mixin Active {
+  box-shadow: inset 2px 2px 5px -2px var(--shadow-second-color),
+    inset -2px -2px 5px -2px var(--shadow-primary-color);
+  background: var(--main-hover-color);
+}
+@mixin Checkbox {
+  box-shadow: inset 2px 2px 5px -2px var(--shadow-second-color),
+    inset -2px -2px 5px -2px var(--shadow-primary-color);
+  border-top: 1px solid var(--border-primary-color);
+  border-left: 1px solid var(--border-primary-color);
+  border-bottom: 1px solid var(--border-second-color);
+  border-right: 1px solid var(--border-second-color);
+  background: var(--main-bg-color);
+}
+@mixin Active2 {
+  box-shadow: inset 2px 2px 5px -2px var(--shadow-second-color),
+    inset -2px -2px 5px -2px var(--shadow-primary-color);
+  background: var(--main-hover-color) !important;
 }

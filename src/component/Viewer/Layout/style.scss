@@ -1,0 +1,65 @@
+@import './../../../scss/variable.scss';
+@import './../../../scss/responsive.scss';
+.list-group {
+  @include cardShow();
+  // background: rgba(255, 255, 255, 1);
+  border-radius: 10px;
+  position: Relative;
+  .list-group-item {
+    padding: 0;
+    border: none;
+    background: var(--main-bg-color);
+    &:not(.active) {
+      border-top: 1px solid var(--border-second-color);
+    }
+    &:not(:last-child) {
+      border-bottom: 1px solid rgba(187, 187, 187, 0.5);
+    }
+  }
+  .active {
+    background: var(--main-hover-color);
+  }
+  a {
+    display: block;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    color: var(--main-text-color);
+    transition: 0.3s ease-in-out;
+    border: 2px solid transparent;
+    outline: none;
+    border-radius: 5px;
+    &:hover {
+      background: var(--main-hover-color);
+    }
+  }
+}
+.layout-icon {
+  display: flex;
+  cursor: pointer;
+  p {
+    padding: 0 5px;
+    margin: 0;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+  }
+  svg {
+    transition: all 0.2s ease-in-out;
+    font-size: 1.3rem;
+  }
+  &:hover {
+    p {
+      color: var(--main-hover-color);
+    }
+    .icon-hover {
+      color: var(--main-hover-color);
+    }
+  }
+}
+.image-container {
+  border-top: 2px solid var(--border-primary-color);
+  border-left: 2px solid var(--border-primary-color);
+  border-bottom: 2px solid var(--border-second-color);
+  border-right: 2px solid var(--border-second-color);
+  border-radius: 12px;
+}

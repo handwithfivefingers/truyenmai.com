@@ -1,0 +1,30 @@
+@import './../../../scss/variable.scss';
+@import './../../../scss/responsive.scss';
+.pagination {
+  padding-top: 20px;
+  height: auto;
+  .pagi-item {
+    width: auto;
+    height: auto;
+    margin: 5px;
+    a {
+      transition: all 0.2 ease-in-out;
+      padding: 10px 16px;
+      border-radius: 999px;
+       @include cardShowmini();
+
+      &:hover {
+        background: var(--main-hover-color);
+      }
+      &:active {
+        @include cardShowmini();
+      }
+    }
+    &.active {
+      a {
+        @include Active();
+        background: var(--main-hover-color);
+      }
+    }
+  }
+}

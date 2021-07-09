@@ -1,0 +1,20 @@
+@import './../../../scss/variable.scss';
+@import './../../../scss/responsive.scss';
+input {
+  @include Input();
+  background-color: var(--main-bg-color) !important;
+  border:1px solid var(--border-second-color) !important;
+}
+.input-group {
+  // @include cardShowmini();
+  // @include Input();
+  span {
+      border:1px solid var(--border-second-color);
+    background-color: var(--main-bg-color) !important;
+    color: var(--main-text-color);
+  }
+}
+button {
+  background-color: transparent;
+  color: var(--main-text-color);
+}

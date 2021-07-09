@@ -1,11 +1,18 @@
-import Home from './../container/HomePage';
-import Blog from './../container/Blog';
-import BlogPost from './../container/BlogPost';
-import About from './../container/About';
-import Contact from './../container/Contact';
-import Login from './../container/Login';
-import Categories from '../container/Categories';
-import NotFound from '../container/NotFound';
+import Home from './../container/Viewer/HomePage';
+import Blog from './../container/Viewer/Blog';
+import BlogPost from './../container/Viewer/BlogPost';
+import About from './../container/Viewer/About';
+import Contact from './../container/Viewer/Contact';
+import Login from './../container/Viewer/Login';
+import Categories from '../container/Viewer/Categories';
+import NotFound from '../container/Viewer/NotFound';
+
+import AdminHomepage from './../container/Dashboard/Homepage';
+import AdminPages from './../container/Dashboard/Pages';
+import AdminPosts from './../container/Dashboard/Posts';
+import AdminCategory from './../container/Dashboard/Category';
+import AdminContact from './../container/Dashboard/Contact';
+
 export const MenuRoutes = [
   {
     path: '/',
@@ -33,6 +40,33 @@ export const MenuRoutes = [
     exact: false,
   },
 ];
+export const AdminRoutes = [
+  {
+    path: '/dashboard',
+    exact: false,
+    component: () => <AdminHomepage />,
+  },
+  {
+    path: '/dashboard/pages',
+    component: () => <AdminPages />,
+    exact: false,
+  },
+  {
+    path: '/dashboard/posts',
+    component: () => <AdminPosts />,
+    exact: false,
+  },
+  {
+    path: '/dashboard/category',
+    component: () => <AdminCategory />,
+    exact: false,
+  },
+  {
+    path: '/dashboard/contact',
+    component: () => <AdminContact />,
+    exact: false,
+  },
+];
 
 export const FrontEndRoutes = [
   {
@@ -40,11 +74,11 @@ export const FrontEndRoutes = [
     component: () => <Home />,
     exact: true,
   },
-  // {
-  //   path: '/blog/category/:slug',
-  //   component: ({ match }) => <Categories match={match} />,
-  //   exact: false,
-  // },
+  {
+    path: '/blog/category/:slug',
+    component: () => <Categories />,
+    exact: false,
+  },
   {
     path: '/blog/category',
     component: () => <Categories />,
@@ -53,7 +87,7 @@ export const FrontEndRoutes = [
 
   {
     path: '/blog/:slug',
-    component: ({match, location,history}) => <BlogPost match={match} location={location} history={history}/>,
+    component: () => <BlogPost />,
     exact: false,
   },
   {
@@ -61,7 +95,7 @@ export const FrontEndRoutes = [
     component: () => <Blog />,
     exact: false,
   },
-  
+
   {
     path: '/about',
     component: () => <About />,
@@ -78,8 +112,8 @@ export const FrontEndRoutes = [
     exact: false,
   },
   {
-    path: '',
+    path: '*',
     component: () => <NotFound />,
-    exact: null,
+    exact: true,
   },
 ];

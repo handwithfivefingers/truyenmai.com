@@ -6,7 +6,7 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import { FrontEndRoutes } from './constant/route';
+import { AdminRoutes, FrontEndRoutes } from './constant/route';
 import { UserProvider } from './helper/Context';
 import { useDispatch, useSelector } from 'react-redux';
 import LoadingScreen from './helper/LoadingScreen';
@@ -54,12 +54,21 @@ function App() {
                 />
               );
             })}
+            
+            {AdminRoutes.map((route) => {
+              return (
+                <Route
+                  key={route.path}
+                  path={route.path}
+                  component={route.component}
+                  exact={route.exact}
+                />
+              );
+            })}
             {/* {renderUserRoute()} */}
           </Switch>
         </Router>
-     
       </div>
-   
     </UserProvider>
   );
 }
