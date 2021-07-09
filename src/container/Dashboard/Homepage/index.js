@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import AdminLayout from '../../../component/Dashboard/Layout';
 
 function AdminHomePage(props) {
   const [state, setState] = useState('');
@@ -7,7 +8,11 @@ function AdminHomePage(props) {
     return () => {};
   }, []);
 
-  return <>Dashboard Home page</>;
+  return (
+    <>
+      <AdminLayout>Dashboard Home page</AdminLayout>
+    </>
+  );
 }
 
 export default AdminHomePage;

@@ -43,7 +43,7 @@ export const MenuRoutes = [
 export const AdminRoutes = [
   {
     path: '/dashboard',
-    exact: false,
+    exact: true,
     component: () => <AdminHomepage />,
   },
   {
@@ -110,10 +110,5 @@ export const FrontEndRoutes = [
     path: '/login',
     component: () => <Login />,
     exact: false,
-  },
-  {
-    path: '*',
-    component: () => <NotFound />,
-    exact: true,
   },
 ];

@@ -1,0 +1,23 @@
+.show {
+  visibility: visible;
+  z-index: 1;
+}
+.side-bar {
+  width: 250px;
+  border-right: 1px solid #333;
+  background: #333;
+  height:100vh;
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    height:auto;
+    li {
+        height:100%;
+      a {
+        color: #eee !important;
+        padding: 4px 15px;
+      }
+    }
+  }
+}

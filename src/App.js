@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // import LoadingScreen from './helper/LoadingScreen';
 // import UserRoute from './component/UserRoute';
 import { FetchBlogPost } from './action';
+import NotFound from './container/Viewer/NotFound';
 function App() {
   // Pagination Context
   const [pagination, Setpagination] = useState('1');
@@ -54,7 +55,7 @@ function App() {
                 />
               );
             })}
-            
+
             {AdminRoutes.map((route) => {
               return (
                 <Route
@@ -65,6 +66,7 @@ function App() {
                 />
               );
             })}
+            <Route path="*" component={() => <NotFound />} exact={true} />
             {/* {renderUserRoute()} */}
           </Switch>
         </Router>
