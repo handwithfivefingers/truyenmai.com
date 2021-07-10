@@ -15,7 +15,7 @@
   --light-second-color: #727475;
   --light-second-background-color: #f1f1f1;
 
-  --dark-color: #b8b8b8;
+  --dark-color: #e4e6eb;
   --dark-background-color: #232420;
   --dark-second-color: #f5f6fa;
   --dark-second-background-color: rgb(54, 54, 54);
@@ -26,7 +26,8 @@
   --second-bg-color: var(--light-second-background-color);
   --main-text-color: var(--light-color);
   --second-text-color: var(--light-second-color);
-  --main-hover-color: #ffe391;
+  /* --main-hover-color: #ffe391; */
+    --main-hover-color: #FFC75F;
   --shadow-primary-color: #fff;
   --shadow-second-color: rgb(87, 87, 87);
   --border-primary-color: #eee;
@@ -37,7 +38,8 @@
   --second-bg-color: var(--dark-second-background-color);
   --main-text-color: var(--dark-color);
   --second-text-color: var(--dark-second-color);
-  --main-hover-color: #00755D;
+  /* --main-hover-color: #00755D; */
+  --main-hover-color: #2d88ff;
   --shadow-primary-color: var(--dark-shadow-primary-color);
   --shadow-second-color: rgb(0, 0, 0);
   --border-primary-color: rgb(86, 86, 86);

@@ -56,6 +56,15 @@
     }
   }
 }
+.hover {
+  cursor: pointer;
+  color: var(--main-text-color);
+  transition:all 0.2s ease-in-out;
+  &:hover {
+    color: var(--main-hover-color);
+    width:40px;
+  }
+}
 .image-container {
   border-top: 2px solid var(--border-primary-color);
   border-left: 2px solid var(--border-primary-color);

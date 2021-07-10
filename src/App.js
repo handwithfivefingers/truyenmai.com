@@ -10,7 +10,8 @@ import { AdminRoutes, FrontEndRoutes } from './constant/route';
 import { UserProvider } from './helper/Context';
 import { useDispatch, useSelector } from 'react-redux';
 // import LoadingScreen from './helper/LoadingScreen';
-// import UserRoute from './component/UserRoute';
+import UserRoute from './component/Viewer/UserRoute';
+import AdminRoute from './component/Dashboard/AdminRoute';
 import { FetchBlogPost } from './action';
 import NotFound from './container/Viewer/NotFound';
 function App() {
@@ -42,12 +43,11 @@ function App() {
     >
       <div className="App">
         {/* {loading ? <LoadingScreen /> : ''} */}
-
         <Router>
           <Switch>
             {FrontEndRoutes.map((route) => {
               return (
-                <Route
+                <UserRoute
                   key={route.path}
                   path={route.path}
                   component={route.component}
@@ -55,10 +55,10 @@ function App() {
                 />
               );
             })}
-
+            {/* <UserRoute /> */}
             {AdminRoutes.map((route) => {
               return (
-                <Route
+                <AdminRoute
                   key={route.path}
                   path={route.path}
                   component={route.component}

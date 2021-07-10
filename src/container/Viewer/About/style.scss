@@ -93,6 +93,7 @@
 .main-skill {
   transition: all 0.2s ease-in-out;
   scroll-snap-align: start;
+  overflow: hidden;
 }
 .transition-non {
   opacity: 0;

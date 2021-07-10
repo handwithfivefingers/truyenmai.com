@@ -6,19 +6,40 @@ import {
   BsForwardFill,
 } from 'react-icons/bs';
 import './style.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { ATLogin, IsUserLogin } from '../../../action/auth.action';
+import { Redirect } from 'react-router-dom';
 function Login(props) {
-  const [state, setState] = useState('');
-  const [username, SetUsername] = useState('');
+  const [email, Setemail] = useState('');
   const [password, SetPassword] = useState('');
-  useEffect(() => {
-    return () => {};
-  }, []);
+  const authenticate = useSelector((state) => state.auth.authenticate);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (!authenticate) {
+      dispatch(IsUserLogin());
+    }
+  }, []);
+  const Login = (e) => {
+    e.preventDefault();
+    const user = {
+      email,
+      password,
+    };
+    dispatch(ATLogin(user));
+  };
+  if (authenticate) {
+    return <Redirect to="/dashboard" />;
+  }
   return (
     <Layout breadcrumb title="Login">
       <div className="row">
         <div className="col-lg-4 col-md-6 col-sm-12">
-          <form className="list-group" style={{ padding: '5px' }}>
+          <form
+            className="list-group"
+            style={{ padding: '5px' }}
+            onSubmit={(e) => Login(e)}
+          >
             <h3>Đăng nhập</h3>
 
             <div className="input-group mb-3">
@@ -27,10 +48,10 @@ function Login(props) {
               </span>
               <input
                 className="form-control"
-                type="text"
-                placeholder="User name"
-                value={username}
-                onChange={(e) => SetUsername(e.target.value)}
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => Setemail(e.target.value)}
               />
             </div>
             <div className="input-group mb-3">

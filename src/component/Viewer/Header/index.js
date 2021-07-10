@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link, useHistory, useLocation, useRouteMatch } from 'react-router-dom';
+import { NavLink, useHistory, useLocation, useRouteMatch } from 'react-router-dom';
 import { MenuRoutes } from '../../../constant/route';
 import UserContext from '../../../helper/Context';
 import {
@@ -50,7 +50,7 @@ function Header(props) {
           {MenuRoutes.map((item, index) => {
             return (
               <li key={index}>
-                <Link to={item.path}>{item.name}</Link>
+                <NavLink  to={item.path} activeClassName='is-active'>{item.name}</NavLink >
               </li>
             );
           })}
@@ -75,7 +75,8 @@ function Header(props) {
                           : ''
                       }`}
                     >
-                      <Link
+                      <NavLink
+                        activeClassName="is-active"
                         className={`${
                           match.location.pathname == item.path
                             ? 'nav-link-item-active'
@@ -84,7 +85,7 @@ function Header(props) {
                         to={item.path}
                       >
                         {item.name}
-                      </Link>
+                      </NavLink>
                     </li>
                   );
                 })

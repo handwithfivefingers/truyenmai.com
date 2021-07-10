@@ -8,11 +8,7 @@ function AdminHomePage(props) {
     return () => {};
   }, []);
 
-  return (
-    <>
-      <AdminLayout>Dashboard Home page</AdminLayout>
-    </>
-  );
+  return <>{process.env.REACT_APP_API}</>;
 }
 
 export default AdminHomePage;

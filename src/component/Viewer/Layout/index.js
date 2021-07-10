@@ -50,7 +50,7 @@ function Layout(props) {
               {props.back ? (
                 <BsFillCaretLeftFill
                   onClick={() => history.goBack()}
-                  className="icon-hover"
+                  className="hover"
                   size="22"
                   animation="spin"
                 />

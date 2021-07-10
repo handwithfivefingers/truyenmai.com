@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-import { APIWPURL } from '../urlConfig';
-
 const instance = axios.create({
-    baseURL: APIWPURL,
+    baseURL: process.env.REACT_APP_API,
 });
 
 export default instance;
