@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './style.scss';
+import '../Style/style.scss';
 import { BsFillCaretUpFill } from 'react-icons/bs';
 function Footer(props) {
   useEffect(() => {

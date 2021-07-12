@@ -5,14 +5,13 @@ import About from './../container/Viewer/About';
 import Contact from './../container/Viewer/Contact';
 import Login from './../container/Viewer/Login';
 import Categories from '../container/Viewer/Categories';
-import NotFound from '../container/Viewer/NotFound';
 
 import AdminHomepage from './../container/Dashboard/Homepage';
 import AdminPages from './../container/Dashboard/Pages';
 import AdminPosts from './../container/Dashboard/Posts';
 import AdminCategory from './../container/Dashboard/Category';
 import AdminContact from './../container/Dashboard/Contact';
-
+import ActionPage from '../container/Dashboard/ActionPage';
 export const MenuRoutes = [
   {
     path: '/',
@@ -49,6 +48,11 @@ export const AdminRoutes = [
   {
     path: '/dashboard/pages',
     component: () => <AdminPages />,
+    exact: false,
+  },
+  {
+    path: '/dashboard/posts/:slug',
+    component: () => <ActionPage />,
     exact: false,
   },
   {

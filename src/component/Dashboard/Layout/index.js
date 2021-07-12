@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AdminHeader from '../Header';
 import AdminSidebar from '../Sidebar';
-import './style.scss';
+import '../Style/style.scss';
 function AdminLayout(props) {
   const [state, setState] = useState('');
 

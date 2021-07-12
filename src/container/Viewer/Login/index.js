@@ -47,7 +47,7 @@ function Login(props) {
                 <BsFillPersonFill />
               </span>
               <input
-                className="form-control"
+                className="form-control login-input"
                 type="email"
                 placeholder="Email"
                 value={email}
@@ -59,14 +59,14 @@ function Login(props) {
                 <BsFillLockFill />
               </span>
               <input
-                className="form-control"
+                className="form-control login-input"
                 type="password"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => SetPassword(e.target.value)}
               />
             </div>
-            <button type="submit" style={{ padding: '12px' }}>
+            <button className="submit-form" type="submit" style={{ padding: '12px' }}>
               Access <BsForwardFill />
             </button>
           </form>

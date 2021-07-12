@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FetchBlogPost } from '../../../action';
 import UserContext from '../../../helper/Context';
 
-import './style.scss';
+import '../Style/style.scss';
 function Pagination(props) {
   const pagi = useSelector((state) => state.blog.totalpage);
   const { pagination, SetPagi } = useContext(UserContext);

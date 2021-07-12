@@ -1,6 +1,6 @@
 @import './../../../scss/variable.scss';
 @import './../../../scss/responsive.scss';
-input {
+input.login-input {
   @include Input();
   background-color: var(--main-bg-color) !important;
   border:1px solid var(--border-second-color) !important;
@@ -14,7 +14,7 @@ input {
     color: var(--main-text-color);
   }
 }
-button {
+.submit-form {
   background-color: transparent;
   color: var(--main-text-color);
 }

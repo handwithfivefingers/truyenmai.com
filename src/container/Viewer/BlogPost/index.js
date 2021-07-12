@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Layout from '../../../component/Viewer/Layout';
-import { LoadPostContent } from './../../../action';
+import { LoadPostContent, FetchImageBlog } from './../../../action';
 import ReactHtmlParser from 'react-html-parser';
 import { useHistory, useParams } from 'react-router-dom';
 import './style.scss';
 function BlogPost(props) {
-  const loading = useSelector((state) => state.blog.loading);
-  
   const post = useSelector((state) => state.blog.post);
   const blog = useSelector((state) => state.blog.data);
   const [title, Settitle] = useState('');
@@ -33,7 +31,14 @@ function BlogPost(props) {
     }
   }, [slug]);
   useEffect(() => {
-    window.scrollTo({top: 0, behavior: 'smooth'});
+    if (post.length > 0) {
+      dispatch(FetchImageBlog(post[0].featured_media)).then((res) => {
+        Setimg(res);
+      });
+    }
+  }, [post]);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   const renderContent = () => {
@@ -50,6 +55,7 @@ function BlogPost(props) {
     }
     return xhtml;
   };
+
   return (
     <Layout sidebar breadcrumb {...props} title={`Post Content`} img={img} back>
       <div className="content">

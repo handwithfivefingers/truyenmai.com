@@ -20,7 +20,11 @@ function App() {
   const SetPagi = (val) => {
     Setpagination(val);
   };
+  const [expand, Setexpanded] = useState(true);
   // Themesmode Context
+  const setExpand = () => {
+    Setexpanded(!expand);
+  };
   const [thememode, Setthememode] = useState(false);
   const setThememode = () => {
     Setthememode(!thememode);
@@ -39,6 +43,8 @@ function App() {
         setThememode,
         pagination,
         SetPagi: (val) => SetPagi(val),
+        expand,
+        expanded: () => Setexpanded(!expand),
       }}
     >
       <div className="App">

@@ -105,7 +105,12 @@ function About(props) {
           }
         } else {
           if (width < 769) {
-            if (getBodyScrollPercent() / 20 >= index + 1) {
+            // if (getBodyScrollPercent() / 20 >= index + 1) {
+            //   element.classList.add('transition-active');
+            // } else {
+            //   element.classList.remove('transition-active');
+            // }
+            if (element.offsetTop  < currentPosition + 120) {
               element.classList.add('transition-active');
             } else {
               element.classList.remove('transition-active');
@@ -113,14 +118,6 @@ function About(props) {
           }
         }
       });
-      // if (parentProcessRef !== null && parentProcessRef !== undefined) {
-      //   let span = parentProcessRef.current.querySelectorAll('span');
-      //   span.forEach((item, index) => {
-      //     if (getBodyScrollPercent() / 24 >= index + 1) {
-      //       span[index + 1].classList.add('span-active');
-      //     }
-      //   });
-      // }
     }
     return () => {};
   }, [currentPosition]);
@@ -139,7 +136,7 @@ function About(props) {
     }
     let height =
       document.getElementsByClassName('about-content')[0].clientHeight;
-    ctx.strokeStyle = `#ffe391`;
+    ctx.strokeStyle = `#FFC75F`;
     ctx.lineWidth = 100;
     // Length to offset the dashes
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);

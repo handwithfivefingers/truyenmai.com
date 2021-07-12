@@ -32,6 +32,28 @@ export const FetchBlogPost = (page) => {
   };
 };
 //`https://truyenmai.com/wp-json/wp/v2/media/${imageId}`
+//Fetch image nè
+export const FetchImageBlog = (imgId) => {
+  return async (dispatch) => {
+    dispatch({
+      type: blogConstant.FETCH_BLOG_POST_IMAGE_REQUEST,
+    });
+    const res = await axios.get(
+      `https://truyenmai.com/wp-json/wp/v2/media/${imgId}`
+    );
+    if (res.status == 200) {
+      dispatch({
+        type: blogConstant.FETCH_BLOG_POST_IMAGE_SUCCESS,
+      });
+      return res.data.guid.rendered;
+    } else {
+      dispatch({
+        type: blogConstant.FETCH_BLOG_POST_IMAGE_FAILURE,
+      });
+      return { message: 'failed' };
+    }
+  };
+};
 // Get post contents
 export const LoadPostContent = (slug) => {
   return async (dispatch) => {

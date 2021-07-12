@@ -1,0 +1,193 @@
+/* Layout */
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+/* Layout */
+
+/* Sidebar */
+.show {
+  visibility: visible;
+  z-index: 1;
+}
+.expanded {
+  width: 250px !important;
+}
+.expanded .expand-toggle {
+  transform: rotate(180deg);
+  right: 5px;
+}
+.expand-toggle {
+  position: absolute;
+  top: 5px;
+  right: 25%;
+  color: #eee;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.side-bar {
+  transition: all 0.2s ease-in-out;
+  width: 60px;
+  background: #333;
+  min-height: 100vh;
+  box-shadow: 15px 0px 0 0 #0089ba;
+  position: relative;
+  overflow: hidden;
+  padding: 20px 0;
+  ul {
+    list-style-type: none;
+    margin: 0;
+    height: auto;
+    padding: 20px 0 0 10px;
+    li {
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      a {
+        text-align: left;
+        color: #eee !important;
+        padding: 8px 16px;
+        width: 100%;
+        position: relative;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        margin: 15px 0;
+        display: flex;
+        span {
+          padding: 0 15px 0 0;
+        }
+        &:hover {
+          background: #0089ba;
+        }
+        &:hover:before {
+          position: absolute;
+          height: 30px;
+          width: 30px;
+          top: 0;
+          right: 0;
+          background: transparent;
+          content: '';
+          transform: translateY(-100%);
+          border-radius: 50px;
+          box-shadow: 15px 15px 0 0 #0089ba;
+        }
+        &:hover:after {
+          position: absolute;
+          height: 30px;
+          width: 30px;
+          bottom: 0;
+          right: 0;
+          background: transparent;
+          content: '';
+          transform: translateY(100%);
+          border-radius: 50px;
+          box-shadow: 15px -15px 0 0 #0089ba;
+        }
+      }
+      .active {
+        background: #0089ba;
+        &:before {
+          position: absolute;
+          height: 30px;
+          width: 30px;
+          top: 0;
+          right: 0;
+          background: transparent;
+          content: '';
+          transform: translateY(-100%);
+          border-radius: 50px;
+          box-shadow: 15px 15px 0 0 #0089ba;
+        }
+        &:after {
+          position: absolute;
+          height: 30px;
+          width: 30px;
+          bottom: 0;
+          right: 0;
+          background: transparent;
+          content: '';
+          transform: translateY(100%);
+          border-radius: 50px;
+          box-shadow: 15px -15px 0 0 #0089ba;
+        }
+      }
+    }
+  }
+}
+/* Sidebar */
+/* Header */
+header {
+  nav.dashboard {
+    position: relative;
+    background: #0089ba;
+    z-index: 999;
+    color: #eee;
+    display: flex;
+    .navbar-brand {
+      a {
+        padding: 8px 12px;
+      }
+    }
+    .navbar-profile {
+      a {
+        padding: 8px 12px;
+        position: relative;
+      }
+      .dropdown-profile {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        list-style-type: none;
+        margin: 10px 0;
+        padding:0;
+        text-align: left;
+        /* width: 100%; */
+        background: #0088bad2;
+        box-shadow: 2px 2px 5px -3px #333;
+        li {
+          display: flex;
+          a {
+            padding: 6px 15px;
+            width:100%;
+            transition:0.2s ease-in-out;
+            cursor: pointer;
+            &:hover {
+              background: #0088ba;
+            }
+          }
+        }
+        li:not(:first-child) {
+          border-top: 1px solid #eee !important;
+        }
+      }
+    }
+    .navbar-search {
+      max-width: 450px;
+      width: 100%;
+      position: relative;
+      input {
+        outline: none;
+        width: 100%;
+        padding: 6px 20px;
+        border-radius: 99px;
+        background-color: rgba(184, 184, 184, 0.3) !important;
+        border: 1px solid transparent;
+        &:focus {
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          color: #eee;
+        }
+      }
+      button {
+        position: absolute;
+        right: 10px;
+        top: 0;
+        padding: 4px 4px;
+        background: transparent;
+      }
+    }
+  }
+}
+/* Header */

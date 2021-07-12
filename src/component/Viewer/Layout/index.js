@@ -8,7 +8,7 @@ import { Route, useHistory } from 'react-router-dom';
 import Header from '../Header';
 import Footer from '../Footer';
 import SideBar from '../Sidebar';
-import './style.scss';
+import '../Style/style.scss';
 import Pagination from '../Pagination';
 import Breadcrumb from '../Breadcrumb';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';

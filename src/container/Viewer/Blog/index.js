@@ -8,8 +8,21 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import './style.scss';
 function Blog(props) {
   const blog = useSelector((state) => state.blog);
-
-
+  const renderCardPost = () => {
+    let xhtml = null;
+    xhtml =
+      blog.data &&
+      blog.data.map((post, index) => {
+        return (
+          <CSSTransition key={index} timeout={500} classNames="item-transition">
+            <div className="col-md-6 col-lg-4 mt-4">
+              <CardItem {...post} />
+            </div>
+          </CSSTransition>
+        );
+      });
+    return xhtml;
+  };
   return (
     <Layout sidebar pagination breadcrumb title="Our Blog" col {...props}>
       <CSSTransition
@@ -17,22 +30,7 @@ function Blog(props) {
         timeout={500}
         classNames="item-transition"
       >
-        <TransitionGroup className="row">
-          {blog.data &&
-            blog.data.map((post, index) => {
-              return (
-                <CSSTransition
-                  key={index}
-                  timeout={500}
-                  classNames="item-transition"
-                >
-                  <div className="col-md-6 col-lg-4 mt-4">
-                    <CardItem {...post} />
-                  </div>
-                </CSSTransition>
-              );
-            })}
-        </TransitionGroup>
+        <TransitionGroup className="row">{renderCardPost()}</TransitionGroup>
       </CSSTransition>
     </Layout>
   );

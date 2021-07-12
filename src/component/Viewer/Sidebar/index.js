@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, Route } from 'react-router-dom';
 import Categories from './../../../container/Viewer/Categories';
 import { BsLayersFill } from 'react-icons/bs';
-import './style.scss';
+import '../Style/style.scss';
 const side = [
   {
     name: 'HTML',
@@ -45,7 +45,7 @@ function SideBar(props) {
           <div className="col mt-3">
             <form className="d-flex" onSubmit={() => alert('Sorry, this function is not available yet')}>
               <input
-                className="form-control me-2"
+                className="form-control me-2 side-search"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"

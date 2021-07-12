@@ -15,7 +15,19 @@ function Input(props) {
           />
         </>
       );
-
+      case 'search':
+        return (
+          <>
+            <label>{props.label}</label>
+            <input
+              type="search"
+              className="form-control form-control-sm"
+              value={props.value}
+              placeholder={props.placeholder}
+              onChange={props.onChange}
+            />
+          </>
+        );
     case 'file':
       return (
         <>
