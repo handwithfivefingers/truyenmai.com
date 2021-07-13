@@ -37,6 +37,9 @@
   display: block;
   // @include cardShow();
   position: relative;
+  canvas {
+    max-height: 88%;
+  }
   span {
     @include Checkbox();
     position: absolute;
@@ -52,16 +55,16 @@
     top: 0%;
   }
   :nth-child(3) {
-    top: 25%;
+    top: 22%;
   }
   :nth-child(4) {
-    top: 50%;
+    top: 44%;
   }
   :nth-child(5) {
-    top: 75%;
+    top: 66%;
   }
   :nth-child(6) {
-    top: 100%;
+    top: 88%;
   }
   @media screen and (max-width: 768px) {
     display: none;

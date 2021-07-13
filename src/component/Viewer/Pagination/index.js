@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FetchBlogPost } from '../../../action';
 import UserContext from '../../../helper/Context';
@@ -7,8 +7,9 @@ import '../Style/style.scss';
 function Pagination(props) {
   const pagi = useSelector((state) => state.blog.totalpage);
   const { pagination, SetPagi } = useContext(UserContext);
-  
+
   const dispatch = useDispatch();
+
   const renderPagination = () => {
     let pagiarr = [];
     let xhtml = '';
@@ -34,10 +35,15 @@ function Pagination(props) {
           );
         });
       }
+      //  pagiarr
 
       return xhtml;
     }
   };
+  const paginate = (array, page_size, page_number) => {
+    return array.slice((page_number - 1) * page_size, page_number * page_size);
+  };
+
   const fetchPostperPage = (page) => {
     SetPagi(page);
     dispatch(FetchBlogPost(page));

@@ -3,15 +3,40 @@
 input.login-input {
   @include Input();
   background-color: var(--main-bg-color) !important;
-  border:1px solid var(--border-second-color) !important;
+  border: 1px solid var(--border-second-color) !important;
 }
 .input-group {
   // @include cardShowmini();
   // @include Input();
   span {
-      border:1px solid var(--border-second-color);
+    border: 1px solid var(--border-second-color);
     background-color: var(--main-bg-color) !important;
     color: var(--main-text-color);
+  }
+}
+form {
+  position: relative;
+  padding: 15px;
+  span.form-return {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      color: var(--main-hover-color);
+    }
+  }
+  .btn-group {
+    justify-content: center;
+    button {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: var(--main-text-color);
+      border: none !important;
+      border-color: inherit;
+      outline: none !important;
+    }
   }
 }
 .submit-form {

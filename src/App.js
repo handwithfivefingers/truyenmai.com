@@ -5,6 +5,7 @@ import {
   Switch,
   Route,
   Redirect,
+  useLocation,
 } from 'react-router-dom';
 import { AdminRoutes, FrontEndRoutes } from './constant/route';
 import { UserProvider } from './helper/Context';
@@ -14,6 +15,8 @@ import UserRoute from './component/Viewer/UserRoute';
 import AdminRoute from './component/Dashboard/AdminRoute';
 import { FetchBlogPost } from './action';
 import NotFound from './container/Viewer/NotFound';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+
 function App() {
   // Pagination Context
   const [pagination, Setpagination] = useState('1');
@@ -22,9 +25,6 @@ function App() {
   };
   const [expand, Setexpanded] = useState(true);
   // Themesmode Context
-  const setExpand = () => {
-    Setexpanded(!expand);
-  };
   const [thememode, Setthememode] = useState(false);
   const setThememode = () => {
     Setthememode(!thememode);
@@ -49,33 +49,35 @@ function App() {
     >
       <div className="App">
         {/* {loading ? <LoadingScreen /> : ''} */}
-        <Router>
-          <Switch>
-            {FrontEndRoutes.map((route) => {
-              return (
-                <UserRoute
-                  key={route.path}
-                  path={route.path}
-                  component={route.component}
-                  exact={route.exact}
-                />
-              );
-            })}
-            {/* <UserRoute /> */}
-            {AdminRoutes.map((route) => {
-              return (
-                <AdminRoute
-                  key={route.path}
-                  path={route.path}
-                  component={route.component}
-                  exact={route.exact}
-                />
-              );
-            })}
-            <Route path="*" component={() => <NotFound />} exact={true} />
-            {/* {renderUserRoute()} */}
-          </Switch>
-        </Router>
+        {/* <Router> */}
+
+        <Switch>
+          {FrontEndRoutes.map((route) => {
+            return (
+              <UserRoute
+                key={route.path}
+                path={route.path}
+                component={route.component}
+                exact={route.exact}
+              />
+            );
+          })}
+          {/* <UserRoute /> */}
+          {AdminRoutes.map((route) => {
+            return (
+              <AdminRoute
+                key={route.path}
+                path={route.path}
+                component={route.component}
+                exact={route.exact}
+              />
+            );
+          })}
+          <Route path="*" component={() => <NotFound />} exact={true} />
+          {/* {renderUserRoute()} */}
+        </Switch>
+
+        {/* </Router> */}
       </div>
     </UserProvider>
   );

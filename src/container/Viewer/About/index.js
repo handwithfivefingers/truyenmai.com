@@ -47,11 +47,13 @@ function About(props) {
       ],
     },
     {
-      name: 'Project',
+      name: 'Project 1',
       header: ['Flipkart'],
-      th: ['2018 - 2020 <br/> IBIE Company'],
+      th: ['Description', 'Role', 'Technology Used'],
       td: [
-        'Role: DESIGNER<br/>Description: 2d graphics designer, retouch image, maintain website, design layout frontend website',
+        'Clone Ecommerce website, create dash board and more backend',
+        'Frontend Developer',
+        '<ul>- Frontend<li>Reactjs, Redux, Css, Axios </li>- Dashboard<li>Reactjs, Redux, Bootstrap, Axios</li>- Backend<li>Nodejs, Express, Mongoose, JWT, Multer</li></ul>',
       ],
     },
   ];
@@ -96,7 +98,7 @@ function About(props) {
       Drawing2D(getBodyScrollPercent());
       com.forEach((element, index) => {
         if (width > 769) {
-          if (getBodyScrollPercent() / 24 >= index + 1) {
+          if (getBodyScrollPercent() / 23 >= index + 1) {
             element.classList.add('transition-active');
             span[index + 1].classList.add('span-active');
           } else {
@@ -110,7 +112,7 @@ function About(props) {
             // } else {
             //   element.classList.remove('transition-active');
             // }
-            if (element.offsetTop  < currentPosition + 120) {
+            if (element.offsetTop < currentPosition + 120) {
               element.classList.add('transition-active');
             } else {
               element.classList.remove('transition-active');
@@ -143,7 +145,7 @@ function About(props) {
     // draw a line
     ctx.beginPath();
     ctx.moveTo(1, 0);
-    ctx.lineTo(1, (height / 100) * percent);
+    ctx.lineTo(1, (height / 100) * (percent));
     ctx.stroke();
   };
   // const clearCanvas = () => {
@@ -218,7 +220,10 @@ function About(props) {
       style="Download"
     >
       <div className="row"></div>
-      <div className="row about-content" style={{ overflowX: 'hidden' }}>
+      <div
+        className="row about-content"
+        style={{ overflowX: 'hidden', padding: '50px 0' }}
+      >
         <div
           className="side-time-line"
           style={{
