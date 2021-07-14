@@ -12,6 +12,7 @@ import AdminPosts from './../container/Dashboard/Posts';
 import AdminCategory from './../container/Dashboard/Category';
 import AdminContact from './../container/Dashboard/Contact';
 import ActionPage from '../container/Dashboard/ActionPage';
+import SearchPage from '../container/Viewer/SearchPage';
 export const MenuRoutes = [
   {
     path: '/',
@@ -28,6 +29,7 @@ export const MenuRoutes = [
     name: 'About',
     exact: false,
   },
+
   {
     path: '/contact',
     name: 'Contact',
@@ -97,6 +99,11 @@ export const FrontEndRoutes = [
   {
     path: '/blog',
     component: () => <Blog />,
+    exact: false,
+  },
+  {
+    path: '/search',
+    component: () => <SearchPage />,
     exact: false,
   },
 

@@ -3,7 +3,7 @@
 input.login-input {
   @include Input();
   background-color: var(--main-bg-color) !important;
-  border: 1px solid var(--border-second-color) !important;
+  border: 1px solid var(--border-second-color);
 }
 .input-group {
   // @include cardShowmini();
@@ -16,6 +16,7 @@ input.login-input {
 }
 form {
   position: relative;
+  @include cardShow();
   padding: 15px;
   span.form-return {
     position: absolute;
@@ -28,8 +29,16 @@ form {
     }
   }
   .btn-group {
+    a {
+      align-self: center;
+      cursor: pointer;
+      &:hover {
+        @extend .hover-text;
+      }
+    }
     justify-content: center;
     button {
+      @extend .hover-text;
       font-weight: bold;
       font-size: 1.2rem;
       color: var(--main-text-color);

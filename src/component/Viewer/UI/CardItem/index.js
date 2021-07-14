@@ -4,7 +4,7 @@ import ModalForm from '../Modal';
 import ReactHtmlParser from 'react-html-parser';
 import '../../Style/style.scss';
 import { useDispatch } from 'react-redux';
-import { BsForwardFill } from 'react-icons/bs';
+import { BsForwardFill, BsInfo } from 'react-icons/bs';
 import { FetchImageBlog } from '../../../../action';
 import LoadingScreen from './../../../../helper/LoadingScreen';
 
@@ -17,15 +17,17 @@ function CardItem(props) {
     const abortCont = new AbortController();
     if (props.featured_media) {
       SetIsLoading(true);
-      dispatch(FetchImageBlog(props.featured_media, { signal: abortCont.signal }))
-      .then((res) => {
-        img = res;
-        Setimage(() => (image !== img ? img : image));
-        SetIsLoading(!IsLoading);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      dispatch(
+        FetchImageBlog(props.featured_media, { signal: abortCont.signal })
+      )
+        .then((res) => {
+          img = res;
+          Setimage(() => (image !== img ? img : image));
+          SetIsLoading(!IsLoading);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } else {
       SetIsLoading(false);
     }
@@ -59,26 +61,22 @@ function CardItem(props) {
         {props.excerpt.rendered.length > 150
           ? ReactHtmlParser(props.excerpt.rendered.slice(0, 150).concat(' ...'))
           : ReactHtmlParser(props.excerpt.rendered)}
+        <hr className="dropdown-divider" />
       </div>
+
       <div className="card-ui-action">
         <ul className="card-ui-block">
-          {/* <li>
-            <a className="card-ui-item" onClick={(e) => setShow(true)}>
-              Excerpt
-            </a>
-          </li>*/}
           <li>
             <Link className="card-ui-item" to={`/blog/${props.slug}`}>
               Xem thêm <BsForwardFill />
             </Link>
           </li>
         </ul>
-
-        {/* <a className="btn" onClick={() => setEditPostModal(true)}>
-          <BiCalendarEdit />
-        </a> */}
+        <div className="card-ui-author">
+          <BsInfo size="1rem" />
+          <span>David Simon</span>
+        </div>
       </div>
-      {/* {EditPost(props)} */}
     </div>
   );
 }

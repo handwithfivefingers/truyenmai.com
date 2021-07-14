@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Route } from 'react-router-dom';
+import {
+  Link,
+  Redirect,
+  Route,
+  useHistory,
+  useLocation,
+} from 'react-router-dom';
 import Categories from './../../../container/Viewer/Categories';
 import { BsLayersFill } from 'react-icons/bs';
 import '../Style/style.scss';
+import axios from './../../../helper/adminAxios';
 const side = [
   {
     name: 'HTML',
@@ -25,9 +32,20 @@ const side = [
     path: '/blog/category/nodejs',
   },
 ];
-function SideBar(props) {
-  const [state, setState] = useState('');
 
+function SideBar(props) {
+  const [search, setSearch] = useState('');
+  const [post, Setpost] = useState([]);
+  let history = useHistory();
+  let location = useLocation();
+  const onSearching = async (e) => {
+    e.preventDefault();
+    history.push({
+      pathname: '/search',
+      search: search,
+      state: post,
+    })
+  };
   useEffect(() => {
     return () => {};
   }, []);
@@ -43,19 +61,25 @@ function SideBar(props) {
 
         <div className="row">
           <div className="col mt-3">
-            <form className="d-flex" onSubmit={() => alert('Sorry, this function is not available yet')}>
+            <form className="d-flex" onSubmit={(e) => onSearching(e)}>
               <input
                 className="form-control me-2 side-search"
                 type="search"
                 placeholder="Search"
-                aria-label="Search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
               />
               <button className="btn" type="submit">
                 Search
               </button>
             </form>
           </div>
-          <a href="#" className="mt-3" style={{ textAlign: 'left' }} onClick={() => alert('Sorry, this function is not available yet')}>
+          <a
+            href="#"
+            className="mt-3"
+            style={{ textAlign: 'left' }}
+            onClick={() => alert('Sorry, this function is not available yet')}
+          >
             More Filter <BsLayersFill />
           </a>
         </div>

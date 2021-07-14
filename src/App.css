@@ -36,7 +36,7 @@
   height: 100px;
   background: rgba(250, 250, 250, 0.4);
   overflow: hidden;
-  z-index: 99999;
+  z-index: 99;
 }
 .loading .loading-item {
   width: 400px;
