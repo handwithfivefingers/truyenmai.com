@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
 :root {
   --background: #eee;
   --text-color: #333;
@@ -9,7 +13,7 @@
 
   --primary-color: #f8f8f8;
   /* --main-hover-color: #ffe391; */
-  
+
   --light-color: #212529;
   --light-background-color: #eee;
   --light-second-color: #727475;
@@ -27,7 +31,7 @@
   --main-text-color: var(--light-color);
   --second-text-color: var(--light-second-color);
   /* --main-hover-color: #ffe391; */
-    --main-hover-color: #FFC75F;
+  --main-hover-color: #ffc75f;
   --shadow-primary-color: #fff;
   --shadow-second-color: rgb(87, 87, 87);
   --border-primary-color: #eee;

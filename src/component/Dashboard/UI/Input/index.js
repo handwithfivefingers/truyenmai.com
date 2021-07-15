@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 function Input(props) {
   switch (props.type) {
     case 'text':
@@ -15,19 +16,19 @@ function Input(props) {
           />
         </>
       );
-      case 'search':
-        return (
-          <>
-            <label>{props.label}</label>
-            <input
-              type="search"
-              className="form-control form-control-sm"
-              value={props.value}
-              placeholder={props.placeholder}
-              onChange={props.onChange}
-            />
-          </>
-        );
+    case 'search':
+      return (
+        <>
+          <label>{props.label}</label>
+          <input
+            type="search"
+            className="form-control form-control-sm"
+            value={props.value}
+            placeholder={props.placeholder}
+            onChange={props.onChange}
+          />
+        </>
+      );
     case 'file':
       return (
         <>
@@ -46,17 +47,18 @@ function Input(props) {
           className="form-control form-control-sm"
           onChange={props.onChange}
           multiple={props.multiple}
+          defaultValue={props.defaultValue}
         >
-          <option value="">Default value</option>
-          {props.options && props.options.length > 0 ? props.options.map((opt, index) => {
-            return (
-              <option key={index} value={opt}>
-                {opt}
-              </option>
-            );
-          }): ''
-        }
+          {props.children}
         </select>
+      );
+    case 'editor':
+      return (
+        <CKEditor
+          editor={ClassicEditor}
+          data={props.data}
+          onChange={(e) => console.log(e)}
+        />
       );
   }
 }

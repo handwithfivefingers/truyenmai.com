@@ -5,7 +5,7 @@ import CardItem from '../../../component/Viewer/UI/CardItem';
 // import { FetchBlogPost, FetchImageBlog } from '../../action';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import './style.scss';
+import '../Style/style.scss';
 function Blog(props) {
   const blog = useSelector((state) => state.blog);
   const renderCardPost = () => {

@@ -71,5 +71,7 @@ $hover: rgb(233, 233, 233);
   background: var(--main-hover-color);
 }
 .hover-text {
-  color: var(--main-hover-color);
+  &:hover {
+    color: var(--main-hover-color);
+  }
 }

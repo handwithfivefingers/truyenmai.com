@@ -7,7 +7,7 @@ import {
   useLocation,
 } from 'react-router-dom';
 import Categories from './../../../container/Viewer/Categories';
-import { BsLayersFill } from 'react-icons/bs';
+import { BsLayersFill, BsSearch } from 'react-icons/bs';
 import '../Style/style.scss';
 import axios from './../../../helper/adminAxios';
 const side = [
@@ -44,7 +44,7 @@ function SideBar(props) {
       pathname: '/search',
       search: search,
       state: post,
-    })
+    });
   };
   useEffect(() => {
     return () => {};
@@ -60,28 +60,32 @@ function SideBar(props) {
         </div>
 
         <div className="row">
-          <div className="col mt-3">
-            <form className="d-flex" onSubmit={(e) => onSearching(e)}>
+          <div className="col mt-3 side-search">
+            <form
+              className="d-flex side-search-form"
+              onSubmit={(e) => onSearching(e)}
+            >
               <input
-                className="form-control me-2 side-search"
+                className="form-control me-2 "
                 type="search"
                 placeholder="Search"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
-              <button className="btn" type="submit">
-                Search
+              <button type="submit">
+                <BsSearch />
               </button>
             </form>
+            <a
+              href="#"
+              className="side-search-filter"
+              style={{ textAlign: 'left' }}
+              onClick={() => alert('Sorry, this function is not available yet')}
+              alt="More Option"
+            >
+              <BsLayersFill />
+            </a>
           </div>
-          <a
-            href="#"
-            className="mt-3"
-            style={{ textAlign: 'left' }}
-            onClick={() => alert('Sorry, this function is not available yet')}
-          >
-            More Filter <BsLayersFill />
-          </a>
         </div>
       </>
     );

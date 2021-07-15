@@ -73,8 +73,10 @@ function CardItem(props) {
           </li>
         </ul>
         <div className="card-ui-author">
-          <BsInfo size="1rem" />
-          <span>David Simon</span>
+          <span>
+            <BsInfo />
+            David Simon
+          </span>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../../../component/Viewer/Layout';
 import { useHistory, useParams } from 'react-router-dom';
-import './style.scss';
+import '../Style/style.scss';
 
 function Categories(props) {
   let history = useHistory();

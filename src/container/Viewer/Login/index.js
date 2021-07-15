@@ -6,7 +6,7 @@ import {
   BsForwardFill,
   BsCaretLeftFill,
 } from 'react-icons/bs';
-import './style.scss';
+import '../Style/style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { ATLogin, IsUserLogin } from '../../../action/auth.action';
 import { Redirect } from 'react-router-dom';
@@ -136,19 +136,20 @@ function Login(props) {
     );
     return xhtml;
   };
+
   const renderSignInForm = () => {
     let xhtml = null;
     xhtml = (
       <form
-        className="form signin-form g-3 needs-validation"
+        className="form row g-3 signin-form g-3 needs-validation"
         style={{ padding: '5px' }}
         onSubmit={(e) => Signup(e)}
         ref={formref}
       >
+        <h3>Đăng kí</h3>
         <span className="form-return" onClick={() => SetShow(!show)}>
           <BsCaretLeftFill />
         </span>
-        <h3>Đăng kí</h3>
         <div className="row g-2">
           <div class="col-md">
             <div className="input-group mb-3">

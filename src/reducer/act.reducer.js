@@ -1,15 +1,16 @@
-import { ActConstant } from '../action/constant';
+import { ActConstant, ActCategories } from '../action/constant';
 
 const iniState = {
   pages: [],
   posts: [],
-  categories: [],
+  category: [],
   loading: false,
   message: '',
 };
 
 export default (state = iniState, action) => {
   switch (action.type) {
+    // FETCH POST
     case ActConstant.AD_FETCH_POST_REQUEST:
       return (state = {
         ...state,
@@ -27,9 +28,44 @@ export default (state = iniState, action) => {
         loading: false,
         message: action.payload,
       });
-    default:
+    // ADD Category
+    case ActCategories.AD_ADD_CATEGORY_REQUEST:
       return (state = {
         ...state,
+        loading: true,
       });
+    case ActCategories.AD_ADD_CATEGORY_SUCCESS:
+      console.log(action.payload);
+      return (state = {
+        ...state,
+        loading: false,
+      });
+    case ActCategories.AD_ADD_CATEGORY_FAILURE:
+      return (state = {
+        ...state,
+        loading: false,
+        message: action.payload,
+      });
+    // FETCH CATEGORY
+    case ActCategories.AD_FETCH_CATEGORY_REQUEST:
+      return (state = {
+        ...state,
+        loading: true,
+      });
+    case ActCategories.AD_FETCH_CATEGORY_SUCCESS:
+      console.log(action.payload);
+      return (state = {
+        ...state,
+        loading: false,
+        category: action.payload.category,
+      });
+    case ActCategories.AD_FETCH_CATEGORY_FAILURE:
+      return (state = {
+        ...state,
+        loading: false,
+        message: action.payload,
+      });
+    default:
+      return state;
   }
 };

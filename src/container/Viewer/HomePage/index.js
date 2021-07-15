@@ -1,23 +1,17 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom';
-// import Layout from '../../component/Layout';
 import Stars from '../../../image/stars.png';
-// import Moon from '../../image/moon.png';
 import Newmoon from '../../../image/newmoon.png';
 import MountainBehind from '../../../image/mountains_behind.png';
 import MountainFront from '../../../image/mountains_front.png';
 import { FaGithub, FaFacebook } from 'react-icons/fa';
 import {
-  SplitWords,
   ScrollTrigger,
   Tween,
-  Timeline,
   SplitChars,
 } from 'react-gsap';
-import { gsap } from 'gsap';
-// import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-import './style.scss';
+import '../Style/style.scss';
 
 function Homepage(props) {
   const title = useRef(null);
@@ -45,7 +39,7 @@ function Homepage(props) {
 
   const OnScrollEvent = (el) => {
     if (el !== null && el !== undefined) {
-      el.style.transform = `translateY(${scrollPosition * 0.75}px)`;
+      el.style.transform = `translateY(${scrollPosition * 0.6}px)`;
     }
   };
   const handleOnscrollSection2 = () => {

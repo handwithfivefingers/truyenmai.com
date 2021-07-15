@@ -7,7 +7,7 @@ import {
   BsGeoAlt,
   BsEnvelopeFill,
   BsFillBriefcaseFill,
-  BsFillChatSquareFill
+  BsFillChatSquareFill,
 } from 'react-icons/bs';
 import { FaGithub, FaFacebook } from 'react-icons/fa';
 function Contact(props) {
@@ -30,16 +30,17 @@ function Contact(props) {
       name: 'Email',
       icon: <BsEnvelopeFill />,
       description: 'handgod1995@gmail.com',
-    }, {
-      name:'Facebook',
-      icon: <FaFacebook />,
-      description: 'Facebook'
     },
     {
-      name:'Github',
+      name: 'Facebook',
+      icon: <FaFacebook />,
+      description: 'Facebook',
+    },
+    {
+      name: 'Github',
       icon: <FaGithub />,
-      description: 'Github'
-    }
+      description: 'Github',
+    },
   ];
   return (
     <Layout breadcrumb title="Contact">
@@ -66,13 +67,12 @@ function Contact(props) {
             </ul>
           </div>
         </div>
-        <div className="col-lg-4 col-md-6 col-sm-12 mt-4">
+        <div className="col-lg-4 col-md-6 col-sm-12 mt-4 contact-form">
           <form
             className="list-group text-left"
             style={{ padding: '0.25rem 0.5rem', listStyleType: 'none' }}
           >
             <h3>Liên hệ</h3>
-
             <div className="input-group mb-3">
               <span className="input-group-text" id="basic-addon1">
                 <BsFillPersonFill />

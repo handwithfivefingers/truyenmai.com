@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import Layout from '../../../component/Viewer/Layout';
 import ReactHtmlParser from 'react-html-parser';
-import './style.scss';
+import '../Style/style.scss';
 function About(props) {
   const [height, setHeight] = useState(null);
   const heightRef = useRef(null);

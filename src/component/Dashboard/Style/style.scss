@@ -1,3 +1,6 @@
+@import './../../../scss/variable.scss';
+@import './../../../scss/responsive.scss';
+
 /* Layout */
 .wrapper {
   display: flex;
@@ -52,12 +55,13 @@
         padding: 8px 16px;
         width: 100%;
         position: relative;
-        border-top-left-radius: 15px;
-        border-bottom-left-radius: 15px;
+        border-top-left-radius: 18px;
+        border-bottom-left-radius: 18px;
         margin: 15px 0;
         display: flex;
         span {
           padding: 0 15px 0 0;
+          color: #eee;
         }
         &:hover {
           background: #0089ba;
@@ -142,7 +146,7 @@ header {
         right: 0;
         list-style-type: none;
         margin: 10px 0;
-        padding:0;
+        padding: 0;
         text-align: left;
         /* width: 100%; */
         background: #0088bad2;
@@ -151,8 +155,8 @@ header {
           display: flex;
           a {
             padding: 6px 15px;
-            width:100%;
-            transition:0.2s ease-in-out;
+            width: 100%;
+            transition: 0.2s ease-in-out;
             cursor: pointer;
             &:hover {
               background: #0088ba;
@@ -183,11 +187,28 @@ header {
       button {
         position: absolute;
         right: 10px;
-        top: 0;
+        top: 50%;
+        transform: translateY(-50%);
         padding: 4px 4px;
         background: transparent;
+        outline: none;
+        border: none;
+        color: #eee;
+        font-size: 16px;
+        &:hover {
+          color: var(--main-hover-color);
+        }
       }
     }
   }
 }
 /* Header */
+// Custom Modal
+.modal-dialog {
+  max-width: 500px;
+  margin: 10% auto;
+}
+.badge {
+  color: #0089ba;
+  background: #fff;
+}

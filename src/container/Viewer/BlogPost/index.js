@@ -4,7 +4,7 @@ import Layout from '../../../component/Viewer/Layout';
 import { LoadPostContent, FetchImageBlog } from './../../../action';
 import ReactHtmlParser from 'react-html-parser';
 import { useHistory, useParams } from 'react-router-dom';
-import './style.scss';
+import '../Style/style.scss';
 function BlogPost(props) {
   const post = useSelector((state) => state.blog.post);
   const blog = useSelector((state) => state.blog.data);
