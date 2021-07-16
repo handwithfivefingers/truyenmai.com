@@ -38,13 +38,14 @@ function SideBar(props) {
   const [post, Setpost] = useState([]);
   let history = useHistory();
   let location = useLocation();
-  const onSearching = async (e) => {
+  const onSearching = (e) => {
     e.preventDefault();
     history.push({
       pathname: '/search',
       search: search,
       state: post,
     });
+    console.log(location);
   };
   useEffect(() => {
     return () => {};

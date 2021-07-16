@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
 import { ADM_Fetch_Single_Post } from '../../../action';
 import Input from '../../../component/Dashboard/UI/Input';
 import './style.scss';
 function ActionPage(props) {
   const [post, SetPost] = useState({});
-
   const [title, SetTitle] = useState('');
   const [content, SetContent] = useState('');
   const [excerpt, SetExcerpt] = useState('');
-  // const [slug,SetSlug] = useState('');
+  const [category, Setcategory] = useState(null);
   const [postImage, SetPostImage] = useState({});
   const [status, SetStatus] = useState(false);
-
+  const categoryList = useSelector((state) => state.action.category);
   let { slug } = useParams();
-  console.log(slug);
+  let history = useHistory();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,10 +24,25 @@ function ActionPage(props) {
       SetExcerpt(res.excerpt ? res.excerpt : '');
       SetPostImage(res.postImage[0]);
       SetStatus(res.status);
+      // Setcategory(res.category);
+      console.log(categoryList);
     });
     return () => {};
   }, []);
-
+  useEffect(() => {
+    if (categoryList.length <= 0) {
+      history.push('/dashboard/posts');
+    }
+  }, [categoryList]);
+  const handleCategories = (val) => {
+    let cate = [val];
+    if (category !== undefined) {
+      for (let cat of category) {
+        cate.push(cat);
+      }
+    }
+    Setcategory(cate);
+  };
   return (
     <div className="row action-page ">
       <h4>Chỉnh sửa bài viết</h4>
@@ -53,6 +67,7 @@ function ActionPage(props) {
             </div>
           </div>
           <div className="col-3">
+            {/** Status  */}
             <div class="mb-3">
               <label class="form-label">Status</label>
               <Input type="select" defaultValue={status}>
@@ -60,6 +75,27 @@ function ActionPage(props) {
                 <option value={false}> False </option>
               </Input>
             </div>
+            {/** Status  */}
+            {/** Categories  */}
+            <div class="mb-3">
+              <label class="form-label">Categories</label>
+              <ul>
+                {categoryList?.map((item) => {
+                  return <li className="category">{item.name}</li>;
+                })}
+              </ul>
+
+              <Input
+                type="select"
+                defaultValue={1}
+                onChange={(e) => handleCategories(e.target.value)}
+              >
+                {categoryList?.map((item) => {
+                  return <option value={item._id}> {item.name} </option>;
+                })}
+              </Input>
+            </div>
+            {/** Categories  */}
             <div
               class="mb-3 img-features"
               style={{

@@ -22,11 +22,11 @@ function Login(props) {
   const authenticate = useSelector((state) => state.auth.authenticate);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (!authenticate) {
-      dispatch(IsUserLogin());
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!authenticate) {
+  //     dispatch(IsUserLogin());
+  //   }
+  // }, []);
   const validation = () => {
     let validate = false;
     if (email.length < 3 && password.split().length < 6) {

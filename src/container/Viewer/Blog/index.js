@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import Layout from '../../../component/Viewer/Layout';
-import { useDispatch, useSelector } from 'react-redux';
-import CardItem from '../../../component/Viewer/UI/CardItem';
-// import { FetchBlogPost, FetchImageBlog } from '../../action';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import ReactHtmlParser from 'react-html-parser';
+import { useSelector } from 'react-redux';
+import { Link, useLocation } from 'react-router-dom';
+import { FetchBlogPost, FetchImageBlog } from '../../../action';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-
+import Layout from '../../../component/Viewer/Layout';
+import CardItem from '../../../component/Viewer/UI/CardItem';
 import '../Style/style.scss';
+
 function Blog(props) {
   const blog = useSelector((state) => state.blog);
+
   const renderCardPost = () => {
     let xhtml = null;
     xhtml =
@@ -23,6 +27,7 @@ function Blog(props) {
       });
     return xhtml;
   };
+
   return (
     <Layout sidebar pagination breadcrumb title="Our Blog" col {...props}>
       <CSSTransition

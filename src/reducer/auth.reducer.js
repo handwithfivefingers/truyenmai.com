@@ -26,6 +26,6 @@ export default (state = initState, action) => {
         message: action.payload,
       });
     default:
-      return initState;
+      return state;
   }
 };

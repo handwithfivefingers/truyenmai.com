@@ -13,13 +13,31 @@ import { useDispatch, useSelector } from 'react-redux';
 // import LoadingScreen from './helper/LoadingScreen';
 import UserRoute from './component/Viewer/UserRoute';
 import AdminRoute from './component/Dashboard/AdminRoute';
-import { FetchBlogPost } from './action';
+import { FetchBlogPost, IsUserLogin } from './action';
 import NotFound from './container/Viewer/NotFound';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import history from './helper/history';
+import ReactGA from 'react-ga';
+
+ReactGA.initialize('G-XEPKKRL1TG');
+
+history.listen((location) => {
+  if (location.pathname.includes('/user')) {
+    let rootURL = location.pathname.split('/')[1];
+    let userPage = location.pathname.split('/')[3];
+
+    let pageHit = `/${rootURL}/${userPage}`;
+    ReactGA.pageview(pageHit);
+  } else {
+    ReactGA.set({ page: location.pathname });
+    ReactGA.pageview(location.pathname);
+  }
+});
 
 function App() {
   // Pagination Context
   const [pagination, Setpagination] = useState('1');
+  const authenticate = useSelector((state) => state.auth.authenticate);
   const SetPagi = (val) => {
     Setpagination(val);
   };
@@ -32,7 +50,15 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(FetchBlogPost());
+    if (!authenticate) {
+      dispatch(IsUserLogin());
+    }
   }, []);
+
+  // useEffect(() => {
+  //   dispatch(ADM_Fetch_Post());
+  //   dispatch(fetch_categories());
+  // }, []);
 
   const loading = useSelector((state) => state.blog.loading);
   // console.log(loading);

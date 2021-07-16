@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ADM_Fetch_Post } from '../../../action';
+import { ADM_Fetch_Post, fetch_categories } from '../../../action';
 import { Link } from 'react-router-dom';
 import { BsPencilSquare } from 'react-icons/bs';
+import './style.scss';
 function AdminPosts(props) {
-  const dispatch = useDispatch();
   const posts = useSelector((state) => state.action.posts);
+  const category = useSelector((state) => state.action.category);
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(ADM_Fetch_Post());
+    dispatch(fetch_categories());
   }, []);
   // console.log(posts);
   const Editmode = () => {
@@ -15,17 +20,20 @@ function AdminPosts(props) {
   };
   return (
     <>
-      <div className="action-btn" style={{ float: 'left', margin: ' 5px' }}>
-        <button className="btn btn-light">Add new <BsPencilSquare /></button>
+      <div className="action-btn btn-group">
+        <button className="btn btn-light">
+          Add new <BsPencilSquare />
+        </button>
       </div>
-      <div className="content">
+      <div className="content table-responsive">
         <table className="table">
           <thead>
             <tr>
               <th>Id</th>
               <th>Title </th>
               <th>Slug</th>
-              <th>Content</th>
+              {/* <th>Tag</th> */}
+              <th>Categories</th>
               <th>Img</th>
               <th>Action</th>
             </tr>
@@ -48,7 +56,8 @@ function AdminPosts(props) {
                     </Link>
                   </td>
                   <td>{item.slug}</td>
-                  <td>{item.content}</td>
+                  {/* <td>{item.content}</td> */}
+                  <td>{item.category}</td>
                   <td>
                     <img
                       src={`${process.env.REACT_APP_PUBLIC_FILE}/${item.postImage[0].img}`}

@@ -11,10 +11,8 @@ import {
 } from 'react-icons/bs';
 import '../Style/style.scss';
 function AdminSidebar(props) {
-
   const { expand, expanded } = useContext(UserContext);
 
-  
   const page = [
     {
       label: 'Dashboard',
@@ -22,8 +20,8 @@ function AdminSidebar(props) {
       icon: <BsGraphUp size={`1.3rem`} />,
     },
     {
-      label: 'Pages',
-      path: '/dashboard/pages',
+      label: 'Task manager',
+      path: '/dashboard/tasks',
       icon: <BsFileEarmarkText size={`1.3rem`} />,
     },
     {
@@ -45,7 +43,7 @@ function AdminSidebar(props) {
   return (
     <>
       <div className={`side-bar ${expand ? 'expanded' : ''}`}>
-        <span className="expand-toggle" onClick={() =>expanded()}>
+        <span className="expand-toggle" onClick={() => expanded()}>
           <BsChevronDoubleRight />
         </span>
         <ul>

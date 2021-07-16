@@ -48,7 +48,7 @@ export const AdminRoutes = [
     component: () => <AdminHomepage />,
   },
   {
-    path: '/dashboard/pages',
+    path: '/dashboard/tasks',
     component: () => <AdminPages />,
     exact: false,
   },
@@ -94,6 +94,11 @@ export const FrontEndRoutes = [
   {
     path: '/blog/:slug',
     component: () => <BlogPost />,
+    exact: false,
+  },
+  {
+    path: '/blog?',
+    component: () => <Blog />,
     exact: false,
   },
   {
