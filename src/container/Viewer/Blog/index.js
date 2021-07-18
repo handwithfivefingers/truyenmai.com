@@ -8,6 +8,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Layout from '../../../component/Viewer/Layout';
 import CardItem from '../../../component/Viewer/UI/CardItem';
 import '../Style/style.scss';
+import LoadingScreen from '../../../helper/LoadingScreen';
 
 function Blog(props) {
   const blog = useSelector((state) => state.blog);
@@ -27,7 +28,9 @@ function Blog(props) {
       });
     return xhtml;
   };
-
+  // if (blog.loading) {
+  //   return <LoadingScreen />;
+  // }
   return (
     <Layout sidebar pagination breadcrumb title="Our Blog" col {...props}>
       <CSSTransition
@@ -35,7 +38,9 @@ function Blog(props) {
         timeout={500}
         classNames="item-transition"
       >
-        <TransitionGroup className="row">{renderCardPost()}</TransitionGroup>
+        <TransitionGroup className="row">
+          {renderCardPost()}
+        </TransitionGroup>
       </CSSTransition>
     </Layout>
   );

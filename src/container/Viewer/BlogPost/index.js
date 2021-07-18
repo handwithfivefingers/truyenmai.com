@@ -10,7 +10,7 @@ function BlogPost(props) {
   const blog = useSelector((state) => state.blog.data);
   const [title, Settitle] = useState('');
   const [content, Setcontent] = useState('');
-  const [img, Setimg] = useState('');
+  const [img, Setimg] = useState(null);
   const dispatch = useDispatch();
   let { slug } = useParams();
 
@@ -21,22 +21,18 @@ function BlogPost(props) {
           if (item.slug === slug) {
             Settitle(item.title.rendered);
             Setcontent(item.content.rendered);
+            Setimg(item._embedded['wp:featuredmedia'][0].source_url);
           }
         });
       } else {
         Setcontent('');
         Settitle('');
+        Setimg(null);
       }
       dispatch(LoadPostContent(slug));
     }
   }, [slug]);
-  useEffect(() => {
-    if (post.length > 0) {
-      dispatch(FetchImageBlog(post[0].featured_media)).then((res) => {
-        Setimg(res);
-      });
-    }
-  }, [post]);
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
@@ -57,7 +53,18 @@ function BlogPost(props) {
   };
 
   return (
-    <Layout sidebar breadcrumb {...props} title={`Post Content`} img={img} back>
+    <Layout
+      sidebar
+      breadcrumb
+      {...props}
+      title={`Post Content`}
+      img={
+        post.length > 0
+          ? post[0]._embedded['wp:featuredmedia'][0].source_url
+          : img
+      }
+      back
+    >
       <div className="content">
         <h3 className="text-center">
           {title ? ReactHtmlParser(title) : renderTitle()}

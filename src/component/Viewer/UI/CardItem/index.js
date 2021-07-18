@@ -9,39 +9,15 @@ import { FetchImageBlog } from '../../../../action';
 import LoadingScreen from './../../../../helper/LoadingScreen';
 
 function CardItem(props) {
-  const [image, Setimage] = useState('');
-  const [IsLoading, SetIsLoading] = useState(true);
-  const dispatch = useDispatch();
-  var img = '';
-  useEffect(() => {
-    const abortCont = new AbortController();
-    if (props.featured_media) {
-      SetIsLoading(true);
-      dispatch(
-        FetchImageBlog(props.featured_media, { signal: abortCont.signal })
-      )
-        .then((res) => {
-          img = res;
-          Setimage(() => (image !== img ? img : image));
-          SetIsLoading(!IsLoading);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      SetIsLoading(false);
-    }
-    return () => abortCont.abort();
-  }, [props]);
   return (
     <div className={`card-ui`}>
       <div
         className="card-ui-imageContainer"
         style={{
-          backgroundImage: `url(${image})`,
+          backgroundImage: `url(${props._embedded['wp:featuredmedia'][0].source_url})`,
         }}
       >
-        {IsLoading ? <LoadingScreen /> : ''}
+        {/* {IsLoading ? <LoadingScreen /> : ''} */}
         <div className="card-ui-cat">
           {/* {props.categories && props.categories.length > 0
             ? props.categories.map((cat, index) => {

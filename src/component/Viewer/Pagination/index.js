@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FetchBlogPost } from '../../../action';
 import UserContext from '../../../helper/Context';
@@ -7,7 +7,7 @@ import '../Style/style.scss';
 function Pagination(props) {
   const pagi = useSelector((state) => state.blog.totalpage);
   const { pagination, SetPagi } = useContext(UserContext);
-
+  const [perpage, Setperpage] = useState(9);
   const dispatch = useDispatch();
 
   const renderPagination = () => {
@@ -27,7 +27,7 @@ function Pagination(props) {
               <a
                 className="pagi-link"
                 href="#"
-                onClick={() => fetchPostperPage(item)}
+                onClick={() => fetchPostperPage({ perpage, page: item })}
               >
                 {item}
               </a>
@@ -44,9 +44,9 @@ function Pagination(props) {
     return array.slice((page_number - 1) * page_size, page_number * page_size);
   };
 
-  const fetchPostperPage = (page) => {
-    SetPagi(page);
-    dispatch(FetchBlogPost(page));
+  const fetchPostperPage = ({ perpage, page: item }) => {
+    SetPagi(item);
+    dispatch(FetchBlogPost({ perpage, page: item }));
   };
   return (
     <>

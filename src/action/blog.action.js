@@ -2,17 +2,20 @@ import axios from '../helper/axios';
 import { blogConstant, postConstant } from './constant';
 
 // Get list post
-export const FetchBlogPost = (page) => {
+export const FetchBlogPost = ({ perpage, page }) => {
   return async (dispatch) => {
     dispatch({
       type: blogConstant.FETCH_BLOG_POST_REQUEST,
     });
-    let res = null;
-    if (!page) {
-      res = await axios.get(`/wp/v2/posts?per_page=9&page=1`);
-    } else {
-      res = await axios.get(`/wp/v2/posts?per_page=9&page=${page}`);
-    }
+    // let res = null;
+    // if (!page) {
+    //   res = await axios.get(`/wp/v2/posts?per_page=9&page=1`);
+    // } else {
+    //   res = await axios.get(`/wp/v2/posts?per_page=9&page=${page}`);
+    // }
+    const res = await axios.get(
+      `/wp/v2/posts?per_page=${perpage}&page=${page}&_embed`
+    );
     if (res.status === 200) {
       dispatch({
         type: blogConstant.FETCH_BLOG_POST_SUCCESS,
@@ -60,7 +63,7 @@ export const LoadPostContent = (slug) => {
     dispatch({
       type: postConstant.FETCH_POST_REQUEST,
     });
-    const res = await axios.get(`/wp/v2/posts?slug=${slug}`);
+    const res = await axios.get(`/wp/v2/posts?slug=${slug}&_embed`);
     if (res.status === 200) {
       dispatch({
         type: postConstant.FETCH_POST_SUCCESS,
@@ -99,6 +102,32 @@ export const EditPostContent = (slug, form) => {
         type: postConstant.EDIT_POST_FAILURE,
         payload: {
           error: res.error,
+        },
+      });
+    }
+  };
+};
+
+export const SearchBlogPost = (params) => {
+  return async (dispatch) => {
+    dispatch({
+      type: blogConstant.SEARCH_BLOG_REQUEST,
+    });
+    //truyenmai.com/wp-json/wp/v2/posts?search=css&_embed
+    const res = await axios.get(`/wp/v2/posts?search=${params}&_embed`);
+    console.log(res);
+    if (res.status === 200) {
+      dispatch({
+        type: blogConstant.SEARCH_BLOG_SUCCESS,
+        payload: {
+          search: res.data,
+        },
+      });
+    } else {
+      dispatch({
+        type: blogConstant.SEARCH_BLOG_FAILURE,
+        payload: {
+          error: res.data,
         },
       });
     }

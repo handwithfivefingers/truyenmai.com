@@ -10,6 +10,8 @@ import Categories from './../../../container/Viewer/Categories';
 import { BsLayersFill, BsSearch } from 'react-icons/bs';
 import '../Style/style.scss';
 import axios from './../../../helper/adminAxios';
+import { SearchBlogPost } from './../../../action';
+import { useDispatch } from 'react-redux';
 const side = [
   {
     name: 'HTML',
@@ -35,17 +37,13 @@ const side = [
 
 function SideBar(props) {
   const [search, setSearch] = useState('');
-  const [post, Setpost] = useState([]);
   let history = useHistory();
-  let location = useLocation();
   const onSearching = (e) => {
     e.preventDefault();
     history.push({
       pathname: '/search',
       search: search,
-      state: post,
     });
-    console.log(location);
   };
   useEffect(() => {
     return () => {};

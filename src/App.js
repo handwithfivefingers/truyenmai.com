@@ -38,6 +38,7 @@ function App() {
   // Pagination Context
   const [pagination, Setpagination] = useState('1');
   const authenticate = useSelector((state) => state.auth.authenticate);
+
   const SetPagi = (val) => {
     Setpagination(val);
   };
@@ -47,9 +48,10 @@ function App() {
   const setThememode = () => {
     Setthememode(!thememode);
   };
+  const [perpage, Setperpage] = useState(9);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(FetchBlogPost());
+    dispatch(FetchBlogPost({ perpage: 9, page: pagination }));
     if (!authenticate) {
       dispatch(IsUserLogin());
     }
@@ -71,6 +73,8 @@ function App() {
         SetPagi: (val) => SetPagi(val),
         expand,
         expanded: () => Setexpanded(!expand),
+        // perpage,
+        // Setperpage: (val) => Setperpage(val),
       }}
     >
       <div className="App">
