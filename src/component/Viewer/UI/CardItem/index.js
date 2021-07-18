@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { BsForwardFill, BsInfo } from 'react-icons/bs';
 import { FetchImageBlog } from '../../../../action';
 import LoadingScreen from './../../../../helper/LoadingScreen';
+import Skeleton from 'react-loading-skeleton';
 
 function CardItem(props) {
   return (
