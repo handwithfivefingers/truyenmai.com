@@ -14,12 +14,12 @@
   flex-direction: row;
   flex-wrap: wrap;
   padding: 20px 0;
-  :nth-child(1) {
-    flex-basis: 15%;
-  }
-  :nth-child(2) {
-    flex-basis: 85%;
-  }
+  // :nth-child(1) {
+  //   flex-basis: 15%;
+  // }
+  // :nth-child(2) {
+  //   flex-basis: 85%;
+  // }
 }
 
 .main-content {

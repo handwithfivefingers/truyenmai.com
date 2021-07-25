@@ -11,7 +11,7 @@ function Footer(props) {
       <div
         className="scroll-top"
         onClick={() => {
-          window.scrollTo({top: 0, behavior: 'smooth'});
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
       >
         <span>
@@ -38,8 +38,8 @@ function Footer(props) {
 
         <div className=" col-md-4  col-sm-12  mt-4">
           <h5>Just a quote</h5>
-            <p>"High Risk, High Reward "</p>
-            <p>"Inaction Brings Doubt and Fear… "</p>
+          <p>"High Risk, High Reward "</p>
+          <p>"Inaction Brings Doubt and Fear… "</p>
         </div>
 
         <div className=" col-md-3 col-sm-12   mt-4">
@@ -47,13 +47,23 @@ function Footer(props) {
             <h5>My Project</h5>
             <ul className="footer-right-bar">
               <li>
-                <a className="footer-link">WEB Blog</a>
+                <a className="footer-link" href="#">
+                  WEB Blog
+                </a>
               </li>
               <li>
-                <a className="footer-link">WEB Ecommerce</a>
+                <a className="footer-link" disabled>
+                  WEB Ecommerce
+                </a>
               </li>
               <li>
-                <a className="footer-link">WEB To-Do List</a>
+                <a
+                  className="footer-link"
+                  href="https://todo-list-handwithfivefingers.vercel.app/"
+                  target="_blank"
+                >
+                  WEB To-Do List
+                </a>
               </li>
             </ul>
           </div>

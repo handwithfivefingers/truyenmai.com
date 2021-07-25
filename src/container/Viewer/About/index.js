@@ -58,96 +58,96 @@ function About(props) {
     },
   ];
 
-  useLayoutEffect(() => {
-    function updatePosition() {
-      setPosition(window.pageYOffset);
-    }
-    window.addEventListener('scroll', updatePosition);
-    updatePosition();
-    return () => window.removeEventListener('scroll', updatePosition);
-  }, []);
+  // useLayoutEffect(() => {
+  //   function updatePosition() {
+  //     setPosition(window.pageYOffset);
+  //   }
+  //   window.addEventListener('scroll', updatePosition);
+  //   updatePosition();
+  //   return () => window.removeEventListener('scroll', updatePosition);
+  // }, []);
 
-  useEffect(() => {
-    // console.log(
-    //   'Componnent:',
-    //   heightRef.current.offsetHeight,
-    //   'Height Display',
-    //   window.innerHeight,
-    //   'Full page Height',
-    //   document.body.getBoundingClientRect().height,
-    //   'Current Top:',
-    //   currentPosition,
-    //   'Component - Top:',
-    //   heightRef.current.getBoundingClientRect().top,
-    // );
-    if (window.outerWidth > 0) {
-      setwidth(window.outerWidth);
-    }
-    // console.log(
-    //   'Height Display:',
-    //   window.innerHeight,
-    //   'Current Top:',
-    //   currentPosition,
-    //   'Center View: ',
-    //   window.innerHeight / 2 + currentPosition
-    // );
-    if (heightRef.current.offsetHeight > 0) {
-      let com = heightRef.current.querySelectorAll('.main-skill');
-      let span = parentProcessRef.current.querySelectorAll('span');
-      setHeight(heightRef.current.offsetHeight);
-      Drawing2D(getBodyScrollPercent());
-      com.forEach((element, index) => {
-        if (width > 769) {
-          if (getBodyScrollPercent() / 23 >= index + 1) {
-            element.classList.add('transition-active');
-            span[index + 1].classList.add('span-active');
-          } else {
-            element.classList.remove('transition-active');
-            span[index + 1].classList.remove('span-active');
-          }
-        } else {
-          if (width < 769) {
-            // if (getBodyScrollPercent() / 20 >= index + 1) {
-            //   element.classList.add('transition-active');
-            // } else {
-            //   element.classList.remove('transition-active');
-            // }
-            if (element.offsetTop < currentPosition + 120) {
-              element.classList.add('transition-active');
-            } else {
-              element.classList.remove('transition-active');
-            }
-          }
-        }
-      });
-    }
-    return () => {};
-  }, [currentPosition]);
-  function getBodyScrollPercent() {
-    var h = document.documentElement,
-      b = document.body,
-      st = 'scrollTop',
-      sh = 'scrollHeight';
-    return ((h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight)) * 100;
-  }
-  const Drawing2D = (percent, index = 4) => {
-    const ctx = processRef.current.getContext('2d');
+  // useEffect(() => {
+  //   // console.log(
+  //   //   'Componnent:',
+  //   //   heightRef.current.offsetHeight,
+  //   //   'Height Display',
+  //   //   window.innerHeight,
+  //   //   'Full page Height',
+  //   //   document.body.getBoundingClientRect().height,
+  //   //   'Current Top:',
+  //   //   currentPosition,
+  //   //   'Component - Top:',
+  //   //   heightRef.current.getBoundingClientRect().top,
+  //   // );
+  //   if (window.outerWidth > 0) {
+  //     setwidth(window.outerWidth);
+  //   }
+  //   // console.log(
+  //   //   'Height Display:',
+  //   //   window.innerHeight,
+  //   //   'Current Top:',
+  //   //   currentPosition,
+  //   //   'Center View: ',
+  //   //   window.innerHeight / 2 + currentPosition
+  //   // );
+  //   if (heightRef.current.offsetHeight > 0) {
+  //     let com = heightRef.current.querySelectorAll('.main-skill');
+  //     let span = parentProcessRef.current.querySelectorAll('span');
+  //     setHeight(heightRef.current.offsetHeight);
+  //     Drawing2D(getBodyScrollPercent());
+  //     com.forEach((element, index) => {
+  //       if (width > 769) {
+  //         if (getBodyScrollPercent() / 23 >= index + 1) {
+  //           element.classList.add('transition-active');
+  //           span[index + 1].classList.add('span-active');
+  //         } else {
+  //           element.classList.remove('transition-active');
+  //           span[index + 1].classList.remove('span-active');
+  //         }
+  //       } else {
+  //         if (width < 769) {
+  //           // if (getBodyScrollPercent() / 20 >= index + 1) {
+  //           //   element.classList.add('transition-active');
+  //           // } else {
+  //           //   element.classList.remove('transition-active');
+  //           // }
+  //           if (element.offsetTop < currentPosition + 120) {
+  //             element.classList.add('transition-active');
+  //           } else {
+  //             element.classList.remove('transition-active');
+  //           }
+  //         }
+  //       }
+  //     });
+  //   }
+  //   return () => {};
+  // }, [currentPosition]);
+  // function getBodyScrollPercent() {
+  //   var h = document.documentElement,
+  //     b = document.body,
+  //     st = 'scrollTop',
+  //     sh = 'scrollHeight';
+  //   return ((h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight)) * 100;
+  // }
+  // const Drawing2D = (percent, index = 4) => {
+  //   const ctx = processRef.current.getContext('2d');
 
-    if (!processRef.current.getContext) {
-      return;
-    }
-    let height =
-      document.getElementsByClassName('about-content')[0].clientHeight;
-    ctx.strokeStyle = `#FFC75F`;
-    ctx.lineWidth = 100;
-    // Length to offset the dashes
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    // draw a line
-    ctx.beginPath();
-    ctx.moveTo(1, 0);
-    ctx.lineTo(1, (height / 100) * (percent));
-    ctx.stroke();
-  };
+  //   if (!processRef.current.getContext) {
+  //     return;
+  //   }
+  //   let height =
+  //     document.getElementsByClassName('about-content')[0].clientHeight;
+  //   ctx.strokeStyle = `#FFC75F`;
+  //   ctx.lineWidth = 100;
+  //   // Length to offset the dashes
+  //   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+  //   // draw a line
+  //   ctx.beginPath();
+  //   ctx.moveTo(1, 0);
+  //   ctx.lineTo(1, (height / 100) * (percent));
+  //   ctx.stroke();
+  // };
   // const clearCanvas = () => {
   //   const ctx = processRef.current.getContext('2d');
   //   if (!processRef.current.getContext) {
@@ -161,7 +161,7 @@ function About(props) {
       xhtml = Table.map((item, index) => {
         return (
           <div
-            className="main-skill list-group mt-5 table-responsive transition-non"
+            className="main-skill list-group mt-5 table-responsive"
             key={index}
           >
             <h3>{item.name}</h3>
@@ -219,12 +219,11 @@ function About(props) {
       img={`https://enijobs.com/wp-content/uploads/2018/10/logo_CV.jpg`}
       style="Download"
     >
-      <div className="row"></div>
       <div
         className="row about-content"
         style={{ overflowX: 'hidden', padding: '50px 0' }}
       >
-        <div
+        {/* <div
           className="side-time-line"
           style={{
             height: `${
@@ -246,7 +245,7 @@ function About(props) {
           <span></span>
           <span></span>
           <span></span>
-        </div>
+        </div> */}
 
         <div className="main-content" ref={heightRef}>
           <h3>My Infomation</h3>
